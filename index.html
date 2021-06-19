@@ -9,12 +9,12 @@
 
 
     <!-- changeinput -->
-    <script src="src/js/changeinput.js"></script>
+    <script src="src/js/ChangeInputs/changeinput.js"></script>
 
 
-    <script src="src/js/code.js"></script>
-    <script src="src/js/getFreqData.js"></script>
-    <script src="src/js/getTimeData.js"></script>
+    <script src="src/js/Calculations/code.js"></script>
+    <script src="src/js/Calculations/getFreqData.js"></script>
+    <script src="src/js/Calculations/getTimeData.js"></script>
 
     <link rel="stylesheet" href="src/css/navbar_style.css">
     <link rel="stylesheet" href="src/css/content.css">
@@ -121,29 +121,6 @@
 
             <div class="values-zpk" style="display: none;">
 
-                <div class="zeros-container coef-container">
-                    <h1>Zeros</h1>
-                    <form class="zeros-coef coef">
-
-                        <label for="z0">z0: </label>
-                        <input type="text" id="z0" value="0.9896 + 0.1440i" onchange="ReadAndPlot('zpk','time')"><br>
-
-                        <label for="z1">z1: </label>
-                        <input type="text" id="z1" value="0.9896 - 0.1440i" onchange="ReadAndPlot('zpk','time')"><br>
-
-                        <label for="z2">z2: </label>
-                        <input type="text" id="z2" value="1" onchange="ReadAndPlot('zpk','time')"><br>
-
-
-
-
-                        <div class="add-remove">
-                            <input type="button" id="zeros-add" class="coef-add" value="+">
-                            <input type="button" id="zeros-remove" class="coef-remove" value="-" onclick="ReadAndPlot('zpk','time')">
-                        </div>
-                    </form>
-                </div>
-
                 <div class="poles-container coef-container">
                     <h1>Poles</h1>
                     <form class="poles-coef coef">
@@ -167,6 +144,31 @@
 
                     </form>
                 </div>
+
+                <div class="zeros-container coef-container">
+                    <h1>Zeros</h1>
+                    <form class="zeros-coef coef">
+
+                        <label for="z0">z0: </label>
+                        <input type="text" id="z0" value="0.9896 + 0.1440i" onchange="ReadAndPlot('zpk','time')"><br>
+
+                        <label for="z1">z1: </label>
+                        <input type="text" id="z1" value="0.9896 - 0.1440i" onchange="ReadAndPlot('zpk','time')"><br>
+
+                        <label for="z2">z2: </label>
+                        <input type="text" id="z2" value="1" onchange="ReadAndPlot('zpk','time')"><br>
+
+
+
+
+                        <div class="add-remove">
+                            <input type="button" id="zeros-add" class="coef-add" value="+">
+                            <input type="button" id="zeros-remove" class="coef-remove" value="-" onclick="ReadAndPlot('zpk','time')">
+                        </div>
+                    </form>
+                </div>
+
+
             </div>
             <div class="controls">
                 <input type="button" value="Time Plot" onclick="ReadAndPlot()">
@@ -192,16 +194,16 @@
         </div>
     </footer>
     <!-- Draw Chart -->
-    <script src="src/js/draw_chart.js"></script>
+    <script src="src/js/Calculations/draw_chart.js"></script>
 
     <!-- Add Data -->
-    <script src="src/js/add_coeffs.js"></script>
+    <script src="src/js/ChangeInputs/add_coeffs.js"></script>
 
     <!-- Remove Data -->
-    <script src="src/js/remove_coeffs.js"></script>
+    <script src="src/js/ChangeInputs/remove_coeffs.js"></script>
 
     <!-- Hamburger script -->
-    <script src="src/js/index.js"></script>
+    <script src="src/js/Header/index.js"></script>
 
 </body>
 
