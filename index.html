@@ -17,7 +17,12 @@
     <!-- Load Icons -->
     <script src="https://kit.fontawesome.com/95d7ee3267.js" crossorigin="anonymous"></script>
 
+    <!-- Math -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.js
 
+
+
+"></script>
 </head>
 
 <body>
@@ -52,15 +57,19 @@
                     <h1>a Coefficients:</h1>
                     <form class="a-coef coef">
 
-                        <label for="a1">a0: </label>
-                        <input type="text" id="a0"><br>
+                        <label for="a0">a0: </label>
+                        <input type="text" id="a0" value="1"><br>
 
                         <label for="a1">a1: </label>
-                        <input type="text" id="a1"><br>
+                        <input type="text" id="a1" value="-1.58"><br>
 
 
-                        <label for="a1">a2: </label>
-                        <input type="text" id="a2"><br>
+                        <label for="a2">a2: </label>
+                        <input type="text" id="a2" value="1.01"><br>
+
+                        <label for="a3">a3: </label>
+                        <input type="text" id="a3" value="-0.23"><br>
+
 
                         <div class="add-remove">
                             <input type="button" id="a-coef-add" class="coef-add" value="+">
@@ -74,13 +83,16 @@
                     <form class="b-coef coef">
 
                         <label for="b0">b0: </label>
-                        <input type="text" id="b0"><br>
+                        <input type="text" id="b0" value="0.48"><br>
 
                         <label for="b1">b1: </label>
-                        <input type="text" id="b1"><br>
+                        <input type="text" id="b1" value="-1.43"><br>
 
                         <label for="b2">b2: </label>
-                        <input type="text" id="b2"><br>
+                        <input type="text" id="b2" value="1.43"><br>
+
+                        <label for="b3">b3: </label>
+                        <input type="text" id="b3" value="-0.48"><br>
 
                         <div class="add-remove">
                             <input type="button" id="b-coef-add" class="coef-add" value="+">
@@ -91,7 +103,7 @@
             </div>
 
             <div class="controls">
-                <input type="button" value="Plot">
+                <input type="button" value="Plot" onclick="Impz()">
             </div>
         </aside>
 

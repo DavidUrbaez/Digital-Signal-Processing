@@ -1,8 +1,12 @@
-chartIt();
+const a = [1, -1.58, 1.01, -0.23];
+const b = [0.48, -1.43, 1.43, -0.48];
+chartIt(a, b);
+var myChart;
+async function chartIt(a, b) {
 
-async function chartIt() {
-    const data = await getData();
-    const ctx = document.getElementById('chart').getContext('2d');
+    const data = await getData(a, b);
+    var ctx = document.getElementById('chart').getContext('2d');
+
 
     var options = {
         // responsive: true,
@@ -36,7 +40,7 @@ async function chartIt() {
     };
 
 
-    const myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: data.xs,
@@ -46,7 +50,7 @@ async function chartIt() {
                 backgroundColor: 'rgba(0, 255, 25, 1)',
                 borderColor: 'rgba(0, 255, 25, 1)',
                 borderWidth: 1,
-                barThickness: 4,
+                barThickness: 10,
                 // pointStyle: 'circle',
 
             }]
@@ -54,4 +58,5 @@ async function chartIt() {
         options: options
     });
 
+    // myChart.destroy();
 }

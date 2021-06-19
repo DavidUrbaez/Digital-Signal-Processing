@@ -1,6 +1,6 @@
-let nextACoeff = "a3";
+let nextACoeff = "a4";
 
-let nextBCoeff = "b3";
+let nextBCoeff = "b4";
 
 function insertInput(Id, Value) {
     const parent = document.getElementById(Id).parentNode;
@@ -15,6 +15,7 @@ function insertInput(Id, Value) {
     let input = document.createElement("input");
     input.type = 'text';
     input.id = Value;
+    input.value = '0';
 
     older_parent.insertBefore(input, parent);
 
