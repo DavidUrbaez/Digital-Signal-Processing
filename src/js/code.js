@@ -11,9 +11,9 @@ async function getData(a, b) {
     const N = 70;
     let xs = new Array(N).fill(0);
 
-    // if (b.length > a.length) {
-    //     let xs = new Array(N + b.length).fill(0);
-    // }
+    if (b.length > a.length) {
+        xs = new Array(N + b.length).fill(0);
+    }
 
     let ys = new Array(N).fill(0);
 
