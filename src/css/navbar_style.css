@@ -1,0 +1,255 @@
+* {
+    box-sizing: border-box;
+}
+
+
+/* variables a ser usadas  */
+
+:root {
+    --primary: #005780;
+    --secundary: #00043a;
+    --tertiary: #125ec2;
+    --menu-background: #35495e;
+    --white-text: #ffffff;
+    --button-hover: #125ec2;
+}
+
+*:focus {
+    outline: 0;
+}
+
+
+/* * {
+
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+} */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    background-color: var(--primary);
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav h1 {
+    color: var(--white-text);
+    font-size: 1.5rem;
+    margin: 0 5vw;
+    width: 70vw;
+    text-align: center;
+}
+
+nav ul.menu-box {
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    width: 50%;
+    height: 100vh;
+    background-color: var(--menu-background);
+    top: 10vh;
+    left: -100%;
+    text-align: left;
+    transition: left .5s;
+    display: flex;
+    flex-direction: column;
+}
+
+nav ul.menu-box li {
+    height: 15vh;
+    width: 80%;
+    padding: 0 10%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: solid .1rem rgba(201, 196, 196, 0.4);
+}
+
+nav ul.menu-box li a {
+    color: var(--white-text);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+nav ul.menu-box li:hover {
+    background-color: var(--button-hover);
+    /* transition: all .3s; */
+    box-shadow: inset 0 -2px 0 0 var(--secundary);
+}
+
+nav ul.menu-box li a br {
+    display: none;
+}
+
+
+/* hamburger */
+
+.nav-toggle {
+    position: absolute;
+    right: 1em;
+    padding: 1em 0.5em;
+    background: transparent;
+    border: 0;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    margin-right: 5vw;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    background: var(--secundary);
+    width: 2em;
+    height: 3px;
+    border-radius: 1em;
+    transition: transform 250ms ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.hamburger::before {
+    top: 7px;
+}
+
+.hamburger::after {
+    bottom: 7px;
+}
+
+
+/* nav open class at body is added with JS */
+
+.nav-open .menu-box {
+    left: 0;
+}
+
+.nav-open .hamburger {
+    transform: rotate(.625turn);
+    background: var(--secundary);
+}
+
+.nav-open .hamburger::before {
+    transform: rotate(270deg) translateX(+7px);
+    background: var(--secundary);
+}
+
+.nav-open .hamburger::after {
+    opacity: 0;
+}
+
+section.nen {
+    margin-top: 10vh;
+    background-color: #0d0d0e;
+    height: 90vh;
+}
+
+section.non {
+    background-color: #a4e2ff;
+    height: 90vh;
+}
+
+
+/* media query */
+
+@media (min-width:650px) {
+    header nav h1 {
+        font-size: 20px;
+        width: 190px;
+        margin-left: 2vw;
+        margin-right: 0;
+    }
+    nav ul.menu-box {
+        left: 0;
+        position: relative;
+        flex-direction: row;
+        height: 10vh;
+        width: auto;
+        margin-right: 10px;
+        margin-left: auto;
+        top: 0;
+        background: none;
+        transition: left 0s;
+    }
+    nav ul.menu-box li {
+        height: 6vh;
+        margin: 2vh 0;
+        padding: 0 5px;
+        margin-right: 1vw;
+        border: none;
+        width: 105px;
+        display: flex;
+        justify-content: center;
+    }
+    nav ul.menu-box li a {
+        font-size: 16px;
+        text-align: center;
+        width: 100%;
+    }
+    nav ul.menu-box li a br {
+        display: block;
+    }
+    .hamburger {
+        display: none;
+    }
+    nav ul.menu-box li:hover {
+        background-color: var(--button-hover);
+        transition: inset .3s;
+        box-shadow: inset 0 -2px 0 0 var(--secundary);
+        border-radius: 20px;
+    }
+    nav ul.menu-box li:hover a {
+        color: var(--secundary);
+    }
+    nav ul.menu-box li:before {
+        content: ' ';
+        display: block;
+    }
+}
+
+@media (min-width:900px) {
+    nav ul.menu-box li {
+        box-sizing: border-box;
+        width: 150px;
+    }
+    nav ul.menu-box {
+        margin-right: 5vw;
+    }
+    nav ul.menu-box li a {
+        font-size: 20px;
+        width: 100%;
+    }
+    nav ul.menu-box li a br {
+        display: none;
+    }
+}

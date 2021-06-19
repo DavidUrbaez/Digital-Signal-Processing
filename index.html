@@ -6,14 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="src/js/code.js"></script>
+    <link rel="stylesheet" href="src/css/navbar_style.css">
+    <link rel="stylesheet" href="src/css/content.css">
+
+    <!-- Load Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
-    <script src="code.js"></script>
+
+    <!-- Load Icons -->
+    <script src="https://kit.fontawesome.com/95d7ee3267.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div style="width:600px;height:250px">
-        <canvas id="chart"></canvas>
-    </div>
+
+    <header>
+        <nav>
+            <h1>David Urbaez León</h1>
+
+            <button class="nav-toggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <ul class="menu-box">
+                <li>
+                    <a href="#" class="fa fa-home nav__link"><br> Home</a>
+                </li>
+
+                <li>
+                    <a href="proyects.html" class="fas fa-laptop-code nav__link"> <br> My Work</a>
+                </li>
+                <li>
+                    <a href="https://co.linkedin.com/in/david-urbaez-le%C3%B3n-6137861a7" class="far fa-address-card nav__link" target="_blank"> <br> Get in Touch</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <aside>
+            <p>a Coefficients:</p>
+
+        </aside>
+        <div style="width:600px;height:250px">
+            <canvas id="chart"></canvas>
+        </div>
+    </section>
 
 
     <script>
@@ -22,29 +60,57 @@
         async function chartIt() {
             const data = await getData();
             const ctx = document.getElementById('chart').getContext('2d');
-            const options = {
-                responsive: true,
-                maintainAspectRatio: false
-            }
+
+            var options = {
+                // responsive: true,
+                // maintainAspectRatio: false,
+                scales: {
+
+                    x: {
+                        grid: {
+                            color: 'white',
+                        },
+                        ticks: {
+                            color: 'white',
+                        }
+                    },
+
+                    y: {
+                        grid: {
+                            color: 'white',
+                        },
+                        ticks: {
+                            color: 'white',
+                        }
+                    }
+                },
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            };
+
+
             const myChart = new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: data.xs,
                     datasets: [{
-                        label: 'Global Average Temperature',
+                        label: 'Filter #1',
                         data: data.ys,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: 'Global Average Temperature',
-                        data: data.ys.map(num => Number(num) + 1),
-                        backgroundColor: 'rgba(255, 255, 132, 0.2)',
-                        borderColor: 'rgba(0, 255, 132, 1)',
-                        borderWidth: 1
+                        backgroundColor: 'rgba(0, 255, 25, 1)',
+                        borderColor: 'rgba(0, 255, 25, 1)',
+                        borderWidth: 1,
+                        barThickness: 4,
+                        // pointStyle: 'circle',
+
                     }]
-                }
-            }, options);
+                },
+                options: options
+            });
+
         }
     </script>
 </body>
