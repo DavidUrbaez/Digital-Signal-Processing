@@ -4,23 +4,22 @@ body {
 
 section.content {
     position: absolute;
-    top: 10vh;
+    top: 15vh;
     width: 98%;
-    height: 80%;
     margin: 1%;
     /* padding: 5vh; */
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 }
 
 section aside {
     margin: 10px;
-    margin-right: 10vw;
+    /* margin-right: 10vw; */
     background-color: rgba(128, 128, 128, 0.5);
     border-radius: 20px;
-    width: 40vw;
+    /* width: 40vw; */
     padding: 1%;
     text-align: center;
     color: white;
@@ -54,13 +53,18 @@ section aside .coef-container {
 
 section aside .coef-container .coef input {
     display: inline-block;
-    width: 100px;
+    width: 120px;
     background: rgba(221, 221, 221, 0.452);
     border-radius: 10px;
     border: none;
-    box-shadow: 6px 2px 8px 2px rgb(36, 36, 36);
+    box-shadow: 2px 5px 8px 2px rgb(36 36 36);
     margin: 4px;
     text-align: center;
+    color: white;
+    padding: 4px;
+}
+
+section aside .coef-container .coef input::placeholder {
     color: white;
 }
 
@@ -83,7 +87,9 @@ section aside .coef-container .coef .coef-remove {
 }
 
 .plot {
-    width: 500px;
+    width: 50%;
+    margin-left: 10px;
+    /* height: 400px; */
 }
 
 .controls input[type="button"] {
@@ -93,10 +99,14 @@ section aside .coef-container .coef .coef-remove {
     border-radius: 30px;
 }
 
+.controls input[type="button"]:hover {
+    background: rgb(21, 164, 247, 0.8);
+}
+
 @media screen and (max-width: 1100px) {
     section aside {
         width: 90vw;
-        margin-right: 0;
+        /* margin-right: 0; */
         margin-bottom: 5vh;
     }
     section aside .coef-container .coef input {
@@ -104,5 +114,6 @@ section aside .coef-container .coef .coef-remove {
     }
     .plot {
         width: 80vw;
+        margin-bottom: 5vh;
     }
 }
