@@ -47,51 +47,56 @@
 
     <section class="content">
         <aside>
-            <div class="a-coef-container coef-container">
-                <h1>a Coefficients:</h1>
-                <form class="a-coef coef">
+            <div class="values">
+                <div class="a-coef-container coef-container">
+                    <h1>a Coefficients:</h1>
+                    <form class="a-coef coef">
 
-                    <label for="a1">a0: </label>
-                    <input type="text" id="a0"><br>
+                        <label for="a1">a0: </label>
+                        <input type="text" id="a0"><br>
 
-                    <label for="a1">a1: </label>
-                    <input type="text" id="a1"><br>
+                        <label for="a1">a1: </label>
+                        <input type="text" id="a1"><br>
 
 
-                    <label for="a1">a2: </label>
-                    <input type="text" id="a2"><br>
+                        <label for="a1">a2: </label>
+                        <input type="text" id="a2"><br>
 
-                    <div class="add-remove">
-                        <input type="button" id="a-coef-add" class="coef-add" value="+">
-                        <input type="button" id="a-coef-remove" class="coef-remove" value="-">
-                    </div>
-                </form>
+                        <div class="add-remove">
+                            <input type="button" id="a-coef-add" class="coef-add" value="+">
+                            <input type="button" id="a-coef-remove" class="coef-remove" value="-">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="b-coef-container coef-container">
+                    <h1>b Coefficients:</h1>
+                    <form class="b-coef coef">
+
+                        <label for="b0">b0: </label>
+                        <input type="text" id="b0"><br>
+
+                        <label for="b1">b1: </label>
+                        <input type="text" id="b1"><br>
+
+                        <label for="b2">b2: </label>
+                        <input type="text" id="b2"><br>
+
+                        <div class="add-remove">
+                            <input type="button" id="b-coef-add" class="coef-add" value="+">
+                            <input type="button" id="b-coef-remove" class="coef-remove" value="-">
+                        </div>
+                    </form>
+                </div>
             </div>
 
-            <div class="b-coef-container coef-container">
-                <h1>b Coefficients:</h1>
-                <form class="b-coef coef">
-
-                    <label for="a1">b0: </label>
-                    <input type="text" id="a1" name="fname"><br>
-
-                    <label for="a1">b1: </label>
-                    <input type="text" id="a1" name="fname"><br>
-
-                    <label for="a1">b2: </label>
-                    <input type="text" id="a1" name="fname"><br>
-
-                    <div class="add-remove">
-                        <input type="button" id="b-coef-add" class="coef-add" value="+">
-                        <input type="button" id="b-coef-remove" class="coef-remove" value="-">
-                    </div>
-                </form>
+            <div class="controls">
+                <input type="button" value="Plot">
             </div>
-
         </aside>
 
         <!-- PLOT -->
-        <div style="width:600px;height:250px">
+        <div class="plot">
             <canvas id="chart"></canvas>
         </div>
 
@@ -103,6 +108,9 @@
 
     <!-- Add Data -->
     <script src="src/js/add_coeffs.js"></script>
+
+    <!-- Remove Data -->
+    <script src="src/js/remove_coeffs.js"></script>
 </body>
 
 </html>
