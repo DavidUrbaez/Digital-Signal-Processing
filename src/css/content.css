@@ -5,9 +5,9 @@ body {
 section.content {
     position: absolute;
     top: 10vh;
-    width: 100%;
+    width: 98%;
     height: 80%;
-    margin: 10px;
+    margin: 1%;
     /* padding: 5vh; */
     display: flex;
     justify-content: center;
@@ -23,10 +23,54 @@ section aside {
     padding: 1%;
     text-align: center;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
-section aside p {
+section aside h1 {
     color: white;
     font-size: 20px;
     font-family: monospace
+}
+
+section aside p {
+    display: inline-block;
+    color: white;
+}
+
+section aside .coef-container {
+    overflow-y: auto;
+    margin: 10px;
+    height: 50%;
+}
+
+section aside .coef-container .coef input {
+    display: inline-block;
+    width: 100px;
+    background: rgba(221, 221, 221, 0.452);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 6px 2px 8px 2px rgb(36, 36, 36);
+    margin: 4px;
+    text-align: center;
+    color: white;
+}
+
+section aside .coef-container .coef input[type=button] {
+    width: 30px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+}
+
+section aside .coef-container .coef .coef-add {
+    background: rgb(83, 165, 1);
+    border: 1px solid rgb(35, 218, 35);
+}
+
+section aside .coef-container .coef .coef-remove {
+    background: rgb(129, 4, 4);
+    border: 1px solid rgb(241, 6, 6);
 }
