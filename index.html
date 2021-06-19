@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PDS</title>
 
     <script src="src/js/code.js"></script>
+    <script src="src/js/codeFrec.js"></script>
     <link rel="stylesheet" href="src/css/navbar_style.css">
     <link rel="stylesheet" href="src/css/content.css">
 
@@ -18,11 +19,7 @@
     <script src="https://kit.fontawesome.com/95d7ee3267.js" crossorigin="anonymous"></script>
 
     <!-- Math -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.js
-
-
-
-"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.js"></script>
 </head>
 
 <body>
@@ -103,7 +100,8 @@
             </div>
 
             <div class="controls">
-                <input type="button" value="Plot" onclick="Impz()">
+                <input type="button" value="Time Plot" onclick="ReadAndPlot()">
+                <input type="button" value="Frequency Plot" onclick="ReadAndPlotFreq()">
             </div>
         </aside>
 

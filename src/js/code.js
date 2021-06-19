@@ -35,7 +35,7 @@ async function getData(a, b) {
     };
 }
 
-function Impz() {
+function ReadAndPlot() {
     let a = [];
     let b = [];
     let aCoeffs = document.querySelectorAll(".a-coef input[type='text']");

@@ -112,6 +112,8 @@ section aside .coef-container .coef .coef-remove:hover {
     border: 1.5px solid rgb(79, 242, 253);
     padding: 1% 30%;
     border-radius: 30px;
+    width: 80%;
+    margin: 1% 0;
 }
 
 .controls input[type="button"]:hover {
