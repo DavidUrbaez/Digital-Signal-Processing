@@ -51,7 +51,7 @@ section aside .coef-container {
     overflow-y: auto;
     margin: 10px;
     height: 90%;
-    max-height: 50vh;
+    max-height: 40vh;
 }
 
 section aside .coef-container .coef input {

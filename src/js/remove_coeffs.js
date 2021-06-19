@@ -9,14 +9,40 @@ function removeInput(Id) {
     const labels = document.querySelectorAll("." + Id + "-coef label");
     labels[labels.length - 1].remove();
 
-    if (Id == "a") {
-        nextACoeff = Id + (parseFloat(nextACoeff.slice(1)) - 1);
-    } else if (Id == "b") {
-        nextBCoeff = Id + (parseFloat(nextBCoeff.slice(1)) - 1);
+    if (Id[0] == "a") {
+
+        nextACoeff = Id[0] + (parseFloat(nextACoeff.slice(1)) - 1);
+
+    } else if (Id[0] == "b") {
+
+        nextBCoeff = Id[0] + (parseFloat(nextBCoeff.slice(1)) - 1);
+
+    } else if (Id[0] == "z") {
+
+        nextZero = Id[0] + (parseFloat(nextZero.slice(1)) - 1);
+
+    } else if (Id[0] == "p") {
+
+        nextPole = Id[0] + (parseFloat(nextPole.slice(1)) - 1);
+
     } else {
+
         console.log("Strange Error!")
+
     }
 }
-document.getElementById("a-coef-remove").addEventListener("click", function() { removeInput("a") });
+document.getElementById("a-coef-remove").addEventListener("click", function() {
+    removeInput("a")
+});
 
-document.getElementById("b-coef-remove").addEventListener("click", function() { removeInput("b") });
+document.getElementById("b-coef-remove").addEventListener("click", function() {
+    removeInput("b")
+});
+
+document.getElementById("poles-remove").addEventListener("click", function() {
+    removeInput("poles")
+});
+
+document.getElementById("zeros-remove").addEventListener("click", function() {
+    removeInput("zeros")
+});

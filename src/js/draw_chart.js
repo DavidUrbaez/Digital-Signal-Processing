@@ -136,3 +136,63 @@ async function chartItFreq(a, b) {
 
     // myChart.destroy();
 }
+
+async function chartItZerosPoles(z, p) {
+
+    const Coef = getAandB(z, p);
+    const data = await getData(Coef.a, Coef.b);
+    var ctx = document.getElementById('chart').getContext('2d');
+
+
+    var options = {
+        // responsive: true,
+        // maintainAspectRatio: false,
+        scales: {
+
+            x: {
+                grid: {
+                    color: 'white',
+                },
+                ticks: {
+                    color: 'white',
+                }
+            },
+
+            y: {
+                grid: {
+                    color: 'white',
+                },
+                ticks: {
+                    color: 'white',
+                }
+            }
+        },
+
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    };
+
+
+    myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.xs,
+            datasets: [{
+                label: 'Filter #1',
+                data: data.ys,
+                backgroundColor: 'rgba(0, 255, 25, 1)',
+                borderColor: 'rgba(0, 255, 25, 1)',
+                borderWidth: 1,
+
+                // pointStyle: 'circle',
+
+            }]
+        },
+        options: options
+    });
+
+    // myChart.destroy();
+}

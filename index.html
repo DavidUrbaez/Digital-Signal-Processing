@@ -7,10 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDS</title>
 
+
+    <!-- changeinput -->
+    <script src="src/js/changeinput.js"></script>
+
+
     <script src="src/js/code.js"></script>
     <script src="src/js/codeFrec.js"></script>
+    <script src="src/js/codeZerosAndPoles.js"></script>
+
     <link rel="stylesheet" href="src/css/navbar_style.css">
     <link rel="stylesheet" href="src/css/content.css">
+    <link rel="stylesheet" href="src/css/zpk.css">
 
     <!-- Load Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
@@ -20,6 +28,10 @@
 
     <!-- Math -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.js"></script>
+
+
+
+
 </head>
 
 <body>
@@ -49,7 +61,14 @@
 
     <section class="content">
         <aside>
-            <div class="values">
+
+            <div class="input-type">
+                <input type="button" id="btn-coef" value="Coefficients" onclick="changeInput()">
+                <input type="button" id="btn-zpk" value="Zeros and Poles" onclick="changeInput()" class="active">
+            </div>
+
+            <div class="values" style="display: none;">
+
                 <div class="a-coef-container coef-container">
                     <h1>a Coefficients:</h1>
                     <form class="a-coef coef">
@@ -99,6 +118,56 @@
                 </div>
             </div>
 
+
+            <div class="values-zpk">
+
+                <div class="zeros-container coef-container">
+                    <h1>Zeros</h1>
+                    <form class="zeros-coef coef">
+
+                        <label for="z0">z0: </label>
+                        <input type="text" id="z0" value="0.9896 + 0.1440i"><br>
+
+                        <label for="z1">z1: </label>
+                        <input type="text" id="z1" value="0.9896 - 0.1440i"><br>
+
+                        <label for="z2">z2: </label>
+                        <input type="text" id="z2" value="1"><br>
+
+
+
+
+                        <div class="add-remove">
+                            <input type="button" id="zeros-add" class="coef-add" value="+">
+                            <input type="button" id="zeros-remove" class="coef-remove" value="-">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="poles-container coef-container">
+                    <h1>Poles</h1>
+                    <form class="poles-coef coef">
+
+                        <label for="p0">p0: </label>
+                        <input type="text" id="p0" value="0.5537+0.4243i"><br>
+
+                        <label for="p1">p1: </label>
+                        <input type="text" id="p1" value="0.5537-0.4243i"><br>
+
+                        <label for="p2">p2: </label>
+                        <input type="text" id="p2" value="0.4727"><br>
+
+
+
+
+                        <div class="add-remove">
+                            <input type="button" id="poles-add" class="coef-add" value="+">
+                            <input type="button" id="poles-remove" class="coef-remove" value="-">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
             <div class="controls">
                 <input type="button" value="Time Plot" onclick="ReadAndPlot()">
                 <input type="button" value="Frequency Plot" onclick="ReadAndPlotFreq()">
@@ -133,6 +202,7 @@
 
     <!-- Hamburger script -->
     <script src="src/js/index.js"></script>
+
 </body>
 
 </html>
