@@ -22,13 +22,12 @@ async function getData(a, b) {
         ys[index + a.length - 1] = math.dot(b.slice().reverse(), xs.slice(index, b.length + index)) + math.dot(ys.slice(index, index + a.length - 1), a.slice(1).reverse().map(x => x * -1))
     }
 
-    // xs = xs.slice(b.length - 1);
-    // ys = ys.slice(b.length - 1);
+
     const maxVal = parseFloat(document.querySelector(".controls input[type='text']").value);
     xs = math.range(0, maxVal)._data;
     ys = ys.slice(a.length - 1, maxVal + a.length - 1);
-    console.log(a.length);
-    console.log(xs.length, ys.length);
+    // console.log(a.length);
+    // console.log(xs.length, ys.length);
     return {
         xs,
         ys
