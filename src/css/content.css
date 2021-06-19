@@ -24,6 +24,9 @@ section aside {
     text-align: center;
     color: white;
     min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 section aside .values {
@@ -92,7 +95,7 @@ section aside .coef-container .coef .coef-remove {
     height: 30px;
     background: rgb(129, 4, 4);
     border: 1px solid rgb(241, 6, 6);
-    font-size: 14px;
+    font-size: 20px;
     /* font-weight: 800; */
 }
 
@@ -118,6 +121,18 @@ section aside .coef-container .coef .coef-remove:hover {
 
 .controls input[type="button"]:hover {
     background: rgb(21, 164, 247, 0.8);
+}
+
+.controls input[type="text"] {
+    width: 20%;
+    text-align: center;
+    background: gray;
+    border: none;
+    margin: 1vh 1vw;
+}
+
+.controls input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.8);
 }
 
 @media screen and (max-width: 1100px) {

@@ -16,6 +16,7 @@ function insertInput(Id, Value) {
     input.type = 'text';
     input.id = Value;
     input.value = '0';
+    input.onchange = ReadAndPlot;
 
     older_parent.insertBefore(input, parent);
 
