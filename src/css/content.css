@@ -23,7 +23,7 @@ section aside {
     padding: 1%;
     text-align: center;
     color: white;
-    height: 60vh;
+    min-height: 60vh;
 }
 
 section aside .values {
@@ -93,7 +93,7 @@ section aside .coef-container .coef .coef-remove {
     background: rgb(129, 4, 4);
     border: 1px solid rgb(241, 6, 6);
     font-size: 14px;
-    font-weight: 800;
+    /* font-weight: 800; */
 }
 
 section aside .coef-container .coef .coef-remove:hover {

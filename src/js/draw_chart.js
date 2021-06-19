@@ -56,7 +56,7 @@ async function chartIt(a, b) {
                 backgroundColor: 'rgba(0, 255, 25, 1)',
                 borderColor: 'rgba(0, 255, 25, 1)',
                 borderWidth: 1,
-                barThickness: 10,
+
                 // pointStyle: 'circle',
 
             }]
@@ -125,9 +125,9 @@ async function chartItFreq(a, b) {
                 data: data.output,
                 backgroundColor: 'rgba(0, 255, 25, 1)',
                 borderColor: 'rgba(0, 255, 25, 1)',
-                borderWidth: 5,
-
-                pointStyle: 'line',
+                borderWidth: 2,
+                pointRadius: 0,
+                // pointStyle: 'line',
 
             }]
         },
