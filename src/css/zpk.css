@@ -1,0 +1,24 @@
+section.content aside div.input-type {
+    margin: 1vh 1vw;
+}
+
+section.content aside div.input-type input {
+    width: 40%;
+    padding: 1% 5%;
+    margin: 0 2%;
+    border-radius: 10px;
+    background: rgb(172, 172, 172);
+}
+
+section.content aside div.input-type input.active {
+    background: rgb(255, 255, 255);
+}
+
+section.content aside div.input-type input:hover {
+    background: rgb(212, 212, 212);
+}
+
+section.content aside .values-zpk {
+    display: flex;
+    margin: 0 auto;
+}

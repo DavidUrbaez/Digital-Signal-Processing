@@ -1,53 +1,41 @@
-async function getData(a, b) {
+function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
 
-
-
-    // const a = [1, -0.2, -0.25, 0.05];
-    // const b = [2, 1.5];
-
-    // const a = [1.0000, -1.1480, 1.5107, 0.2703]
-    // const b = [0.1808, 0.1047, 0.3107, 0.1047, 0.1808]
-
-    const N = 70;
-    let xs = new Array(N).fill(0);
-
-    if (b.length > a.length) {
-        xs = new Array(N + b.length).fill(0);
-    }
-
-    let ys = new Array(N).fill(0);
-
-    xs[b.length - 1] = 1;
-    for (let index = 0; index < N - a.length; index++) {
-        ys[index + a.length - 1] = math.dot(b.slice().reverse(), xs.slice(index, b.length + index)) + math.dot(ys.slice(index, index + a.length - 1), a.slice(1).reverse().map(x => x * -1))
-    }
-
-
-    const maxVal = parseFloat(document.querySelector(".controls input[type='text']").value);
-    xs = math.range(0, maxVal)._data;
-    ys = ys.slice(a.length - 1, maxVal + a.length - 1);
-    // console.log(a.length);
-    // console.log(xs.length, ys.length);
-    return {
-        xs,
-        ys
-    };
-}
-
-function ReadAndPlot() {
     let a = [];
     let b = [];
-    let aCoeffs = document.querySelectorAll(".a-coef input[type='text']");
-    let bCoeffs = document.querySelectorAll(".b-coef input[type='text']");
 
-    aCoeffs.forEach(aCoeff => {
-        a.push(parseFloat(aCoeff.value));
-        console.log(aCoeff.value);
-    })
 
-    bCoeffs.forEach(bCoeff => {
-        b.push(parseFloat(bCoeff.value));
-    })
+    if (ReadType == "coef") {
+
+        let aCoeffs = document.querySelectorAll(".a-coef input[type='text']");
+        let bCoeffs = document.querySelectorAll(".b-coef input[type='text']");
+
+        aCoeffs.forEach(aCoeff => {
+            a.push(parseFloat(aCoeff.value));
+            console.log(aCoeff.value);
+        })
+
+        bCoeffs.forEach(bCoeff => {
+            b.push(parseFloat(bCoeff.value));
+        })
+    } else if (ReadType == "zpk") {
+
+        let zeros = [];
+        let poles = [];
+        let zerosInputs = document.querySelectorAll(".zeros-coef input[type='text']");
+        let polesInputs = document.querySelectorAll(".poles-coef input[type='text']");
+
+        zerosInputs.forEach(zero => {
+            zeros.push(math.complex(zero.value));
+        })
+
+        polesInputs.forEach(pole => {
+            poles.push(math.complex(pole.value));
+        })
+
+        const Coef = getAandB(zeros, poles);
+        a = Coef.a;
+        b = Coef.b;
+    }
 
 
 
@@ -56,5 +44,67 @@ function ReadAndPlot() {
     }
 
 
-    chartIt(a, b);
+
+    if (OutputType == "time") {
+        chartIt(a, b);
+    } else if (OutputType == "freq") {
+        chartItFreq(a, b);
+    }
+
+}
+
+
+
+
+function getAandB(z, p) {
+    // Returns a and b from z,p
+
+    //Zeros with b
+
+    let conv1 = [1, math.multiply(z[0], -1)];
+    for (let i = 1; i < z.length; i++) {
+        conv1 = convolution(conv1, [1, math.multiply(z[i], -1)]);
+    }
+    let b = conv1.map(x => x.re);
+
+
+    // Poles with a
+    let conv2 = [1, math.multiply(p[0], -1)];
+    for (let i = 1; i < p.length; i++) {
+        conv2 = convolution(conv2, [1, math.multiply(p[i], -1)]);
+    }
+    let a = conv2.map(x => x.re);
+
+    //with a and b return data
+    return {
+        a,
+        b
+    }
+
+}
+
+
+
+
+// Convolution Code
+
+Array.prototype.insert = function(index, item) {
+    this.splice(index, 0, item);
+};
+
+function convolution(x, y) {
+
+    let output = new Array(x.length + y.length - 1).fill(0);
+
+
+    for (let data = 0; data < y.length - 1; data++) {
+        x.push(0)
+        x.insert(0, 0);
+    }
+    for (let i = 0; i < output.length; i++) {
+        output[i] = math.dot(x.slice(0 + i, y.length + i), y.reverse());
+        y.reverse();
+    }
+
+    return output
 }

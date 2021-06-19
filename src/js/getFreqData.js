@@ -44,28 +44,3 @@ async function getFrequencyData(a, b) {
         output
     };
 }
-
-function ReadAndPlotFreq() {
-    let a = [];
-    let b = [];
-    let aCoeffs = document.querySelectorAll(".a-coef input[type='text']");
-    let bCoeffs = document.querySelectorAll(".b-coef input[type='text']");
-
-    aCoeffs.forEach(aCoeff => {
-        a.push(parseFloat(aCoeff.value));
-        console.log(aCoeff.value);
-    })
-
-    bCoeffs.forEach(bCoeff => {
-        b.push(parseFloat(bCoeff.value));
-    })
-
-
-
-    if (myChart) {
-        myChart.destroy();
-    }
-
-
-    chartItFreq(a, b);
-}

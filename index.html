@@ -7,10 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDS</title>
 
+
+    <!-- changeinput -->
+    <script src="src/js/changeinput.js"></script>
+
+
     <script src="src/js/code.js"></script>
-    <script src="src/js/codeFrec.js"></script>
+    <script src="src/js/getFreqData.js"></script>
+    <script src="src/js/getTimeData.js"></script>
+
     <link rel="stylesheet" href="src/css/navbar_style.css">
     <link rel="stylesheet" href="src/css/content.css">
+    <link rel="stylesheet" href="src/css/zpk.css">
 
     <!-- Load Chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
@@ -20,6 +28,10 @@
 
     <!-- Math -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.js"></script>
+
+
+
+
 </head>
 
 <body>
@@ -49,28 +61,35 @@
 
     <section class="content">
         <aside>
+
+            <div class="input-type">
+                <input type="button" id="btn-coef" value="Coefficients" onclick="changeInput()" class="active">
+                <input type="button" id="btn-zpk" value="Zeros and Poles" onclick="changeInput();ReadAndPlot('zpk','time')">
+            </div>
+
             <div class="values">
+
                 <div class="a-coef-container coef-container">
                     <h1>a Coefficients:</h1>
                     <form class="a-coef coef">
 
                         <label for="a0">a0: </label>
-                        <input type="text" id="a0" value="1" onchange="ReadAndPlot()"><br>
+                        <input type="text" id="a0" value="1" onchange="ReadAndPlot('coef','time')"><br>
 
                         <label for="a1">a1: </label>
-                        <input type="text" id="a1" value="-1.58" onchange="ReadAndPlot()"><br>
+                        <input type="text" id="a1" value="-1.58" onchange="ReadAndPlot('coef','time')"><br>
 
 
                         <label for="a2">a2: </label>
-                        <input type="text" id="a2" value="1.01" onchange="ReadAndPlot()"><br>
+                        <input type="text" id="a2" value="1.01" onchange="ReadAndPlot('coef','time')"><br>
 
                         <label for="a3">a3: </label>
-                        <input type="text" id="a3" value="-0.23" onchange="ReadAndPlot()"><br>
+                        <input type="text" id="a3" value="-0.23" onchange="ReadAndPlot('coef','time')"><br>
 
 
                         <div class="add-remove">
                             <input type="button" id="a-coef-add" class="coef-add" value="+">
-                            <input type="button" id="a-coef-remove" class="coef-remove" value="-" onclick="ReadAndPlot()">
+                            <input type="button" id="a-coef-remove" class="coef-remove" value="-" onclick="ReadAndPlot('coef','time')">
                         </div>
                     </form>
                 </div>
@@ -80,32 +99,82 @@
                     <form class="b-coef coef">
 
                         <label for="b0">b0: </label>
-                        <input type="text" id="b0" value="0.48" onchange="ReadAndPlot()"><br>
+                        <input type="text" id="b0" value="0.48" onchange="ReadAndPlot('coef','time')"><br>
 
                         <label for="b1">b1: </label>
-                        <input type="text" id="b1" value="-1.43" onchange="ReadAndPlot()"><br>
+                        <input type="text" id="b1" value="-1.43" onchange="ReadAndPlot('coef','time')"><br>
 
                         <label for="b2">b2: </label>
-                        <input type="text" id="b2" value="1.43" onchange="ReadAndPlot()"><br>
+                        <input type="text" id="b2" value="1.43" onchange="ReadAndPlot('coef','time')"><br>
 
                         <label for="b3">b3: </label>
-                        <input type="text" id="b3" value="-0.48" onchange="ReadAndPlot()"><br>
+                        <input type="text" id="b3" value="-0.48" onchange="ReadAndPlot('coef','time')"><br>
 
                         <div class="add-remove">
                             <input type="button" id="b-coef-add" class="coef-add" value="+">
-                            <input type="button" id="b-coef-remove" class="coef-remove" value="-" onclick="ReadAndPlot()">
+                            <input type="button" id="b-coef-remove" class="coef-remove" value="-" onclick="ReadAndPlot('coef','time')">
                         </div>
                     </form>
                 </div>
             </div>
 
+
+            <div class="values-zpk" style="display: none;">
+
+                <div class="zeros-container coef-container">
+                    <h1>Zeros</h1>
+                    <form class="zeros-coef coef">
+
+                        <label for="z0">z0: </label>
+                        <input type="text" id="z0" value="0.9896 + 0.1440i" onchange="ReadAndPlot('zpk','time')"><br>
+
+                        <label for="z1">z1: </label>
+                        <input type="text" id="z1" value="0.9896 - 0.1440i" onchange="ReadAndPlot('zpk','time')"><br>
+
+                        <label for="z2">z2: </label>
+                        <input type="text" id="z2" value="1" onchange="ReadAndPlot('zpk','time')"><br>
+
+
+
+
+                        <div class="add-remove">
+                            <input type="button" id="zeros-add" class="coef-add" value="+">
+                            <input type="button" id="zeros-remove" class="coef-remove" value="-" onclick="ReadAndPlot('zpk','time')">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="poles-container coef-container">
+                    <h1>Poles</h1>
+                    <form class="poles-coef coef">
+
+                        <label for="p0">p0: </label>
+                        <input type="text" id="p0" value="0.5537+0.4243i" onchange="ReadAndPlot('zpk','time')"><br>
+
+                        <label for="p1">p1: </label>
+                        <input type="text" id="p1" value="0.5537-0.4243i" onchange="ReadAndPlot('zpk','time')"><br>
+
+                        <label for="p2">p2: </label>
+                        <input type="text" id="p2" value="0.4727" onchange="ReadAndPlot('zpk','time')"><br>
+
+
+
+
+                        <div class="add-remove">
+                            <input type="button" id="poles-add" class="coef-add" value="+">
+                            <input type="button" id="poles-remove" class="coef-remove" value="-" onclick="ReadAndPlot('zpk','time')">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
             <div class="controls">
                 <input type="button" value="Time Plot" onclick="ReadAndPlot()">
-                <input type="button" value="Frequency Plot" onclick="ReadAndPlotFreq()">
+                <input type="button" value="Frequency Plot" onclick="ReadAndPlot(ReadType = actualInput,OutputType = 'freq')">
 
                 <br>
                 <label for="maxTime">maxTime </label>
-                <input type="text" id="maxTime" value="15" onchange="ReadAndPlot()">
+                <input type="text" id="maxTime" value="15" onchange="ReadAndPlot(ReadType = actualInput,OutputType = 'time')">
             </div>
         </aside>
 
@@ -133,6 +202,7 @@
 
     <!-- Hamburger script -->
     <script src="src/js/index.js"></script>
+
 </body>
 
 </html>
