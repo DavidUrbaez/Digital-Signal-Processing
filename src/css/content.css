@@ -5,28 +5,104 @@ body {
 section.content {
     position: absolute;
     top: 10vh;
-    width: 100%;
+    width: 98%;
     height: 80%;
-    margin: 10px;
+    margin: 1%;
     /* padding: 5vh; */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 section aside {
+    margin: 10px;
     margin-right: 10vw;
     background-color: rgba(128, 128, 128, 0.5);
     border-radius: 20px;
-    height: 60vh;
-    width: 20vw;
+    width: 40vw;
     padding: 1%;
+    text-align: center;
+    color: white;
+    height: 60vh;
+}
+
+section aside .values {
+    display: flex;
+    height: 80%;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+}
+
+section aside h1 {
+    color: white;
+    font-size: 20px;
+    font-family: monospace
+}
+
+section aside p {
+    display: inline-block;
+    color: white;
+}
+
+section aside .coef-container {
+    overflow-y: auto;
+    margin: 10px;
+    height: 90%;
+    max-height: 50vh;
+}
+
+section aside .coef-container .coef input {
+    display: inline-block;
+    width: 100px;
+    background: rgba(221, 221, 221, 0.452);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 6px 2px 8px 2px rgb(36, 36, 36);
+    margin: 4px;
     text-align: center;
     color: white;
 }
 
-section aside p {
-    color: white;
-    font-size: 20px;
-    font-family: monospace
+section aside .coef-container .coef input[type=button] {
+    width: 30px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+}
+
+section aside .coef-container .coef .coef-add {
+    background: rgb(83, 165, 1);
+    border: 1px solid rgb(35, 218, 35);
+}
+
+section aside .coef-container .coef .coef-remove {
+    background: rgb(129, 4, 4);
+    border: 1px solid rgb(241, 6, 6);
+}
+
+.plot {
+    width: 500px;
+}
+
+.controls input[type="button"] {
+    background: rgb(21, 164, 247);
+    border: 1.5px solid rgb(79, 242, 253);
+    padding: 1% 30%;
+    border-radius: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+    section aside {
+        width: 90vw;
+        margin-right: 0;
+        margin-bottom: 5vh;
+    }
+    section aside .coef-container .coef input {
+        width: 80%;
+    }
+    .plot {
+        width: 80vw;
+    }
 }

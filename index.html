@@ -16,6 +16,8 @@
 
     <!-- Load Icons -->
     <script src="https://kit.fontawesome.com/95d7ee3267.js" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body>
@@ -45,74 +47,70 @@
 
     <section class="content">
         <aside>
-            <p>a Coefficients:</p>
+            <div class="values">
+                <div class="a-coef-container coef-container">
+                    <h1>a Coefficients:</h1>
+                    <form class="a-coef coef">
 
+                        <label for="a1">a0: </label>
+                        <input type="text" id="a0"><br>
+
+                        <label for="a1">a1: </label>
+                        <input type="text" id="a1"><br>
+
+
+                        <label for="a1">a2: </label>
+                        <input type="text" id="a2"><br>
+
+                        <div class="add-remove">
+                            <input type="button" id="a-coef-add" class="coef-add" value="+">
+                            <input type="button" id="a-coef-remove" class="coef-remove" value="-">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="b-coef-container coef-container">
+                    <h1>b Coefficients:</h1>
+                    <form class="b-coef coef">
+
+                        <label for="b0">b0: </label>
+                        <input type="text" id="b0"><br>
+
+                        <label for="b1">b1: </label>
+                        <input type="text" id="b1"><br>
+
+                        <label for="b2">b2: </label>
+                        <input type="text" id="b2"><br>
+
+                        <div class="add-remove">
+                            <input type="button" id="b-coef-add" class="coef-add" value="+">
+                            <input type="button" id="b-coef-remove" class="coef-remove" value="-">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="controls">
+                <input type="button" value="Plot">
+            </div>
         </aside>
-        <div style="width:600px;height:250px">
+
+        <!-- PLOT -->
+        <div class="plot">
             <canvas id="chart"></canvas>
         </div>
+
+
     </section>
 
+    <!-- Draw Chart -->
+    <script src="src/js/draw_chart.js"></script>
 
-    <script>
-        chartIt();
+    <!-- Add Data -->
+    <script src="src/js/add_coeffs.js"></script>
 
-        async function chartIt() {
-            const data = await getData();
-            const ctx = document.getElementById('chart').getContext('2d');
-
-            var options = {
-                // responsive: true,
-                // maintainAspectRatio: false,
-                scales: {
-
-                    x: {
-                        grid: {
-                            color: 'white',
-                        },
-                        ticks: {
-                            color: 'white',
-                        }
-                    },
-
-                    y: {
-                        grid: {
-                            color: 'white',
-                        },
-                        ticks: {
-                            color: 'white',
-                        }
-                    }
-                },
-
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            };
-
-
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: data.xs,
-                    datasets: [{
-                        label: 'Filter #1',
-                        data: data.ys,
-                        backgroundColor: 'rgba(0, 255, 25, 1)',
-                        borderColor: 'rgba(0, 255, 25, 1)',
-                        borderWidth: 1,
-                        barThickness: 4,
-                        // pointStyle: 'circle',
-
-                    }]
-                },
-                options: options
-            });
-
-        }
-    </script>
+    <!-- Remove Data -->
+    <script src="src/js/remove_coeffs.js"></script>
 </body>
 
 </html>
