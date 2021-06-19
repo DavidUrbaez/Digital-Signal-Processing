@@ -10,12 +10,15 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
         let bCoeffs = document.querySelectorAll(".b-coef input[type='text']");
 
         aCoeffs.forEach(aCoeff => {
+
             a.push(parseFloat(aCoeff.value));
-            console.log(aCoeff.value);
+
         })
 
         bCoeffs.forEach(bCoeff => {
+
             b.push(parseFloat(bCoeff.value));
+
         })
     } else if (ReadType == "zpk") {
 
@@ -37,11 +40,13 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
         b = Coef.b;
     }
 
-
+    console.log("a: ", a)
+    console.log("b: ", b)
 
     if (myChart) {
         myChart.destroy();
     }
+
 
 
 
@@ -50,6 +55,7 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
     } else if (OutputType == "freq") {
         chartItFreq(a, b);
     }
+
 
 }
 
@@ -62,18 +68,34 @@ function getAandB(z, p) {
     //Zeros with b
 
     let conv1 = [1, math.multiply(z[0], -1)];
-    for (let i = 1; i < z.length; i++) {
-        conv1 = convolution(conv1, [1, math.multiply(z[i], -1)]);
+    if (z.length > 1) {
+        for (let i = 1; i < z.length; i++) {
+            conv1 = convolution(conv1, [1, math.multiply(z[i], -1)]);
+        }
     }
-    let b = conv1.map(x => x.re);
+    let b = conv1.map(x => {
+        if (typeof x == 'object') {
+            return x.re;
+        } else {
+            return x;
+        }
+    });
 
 
     // Poles with a
     let conv2 = [1, math.multiply(p[0], -1)];
-    for (let i = 1; i < p.length; i++) {
-        conv2 = convolution(conv2, [1, math.multiply(p[i], -1)]);
+    if (p.length > 1) {
+        for (let i = 1; i < p.length; i++) {
+            conv2 = convolution(conv2, [1, math.multiply(p[i], -1)]);
+        }
     }
-    let a = conv2.map(x => x.re);
+    let a = conv2.map(x => {
+        if (typeof x == 'object') {
+            return x.re;
+        } else {
+            return x;
+        }
+    });
 
     //with a and b return data
     return {

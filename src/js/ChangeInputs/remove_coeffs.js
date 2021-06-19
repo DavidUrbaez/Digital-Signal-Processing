@@ -30,6 +30,7 @@ function removeInput(Id) {
         console.log("Strange Error!")
 
     }
+    ReadAndPlot()
 }
 document.getElementById("a-coef-remove").addEventListener("click", function() {
     removeInput("a")
