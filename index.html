@@ -15,6 +15,7 @@
     <script src="src/js/Calculations/code.js"></script>
     <script src="src/js/Calculations/getFreqData.js"></script>
     <script src="src/js/Calculations/getTimeData.js"></script>
+    <script src="src/js/Calculations/getZPmapData.js"></script>
 
     <link rel="stylesheet" href="src/css/navbar_style.css">
     <link rel="stylesheet" href="src/css/content.css">
@@ -173,6 +174,7 @@
             <div class="controls">
                 <input type="button" value="Time Plot" onclick="ReadAndPlot()">
                 <input type="button" value="Frequency Plot" onclick="ReadAndPlot(ReadType = actualInput,OutputType = 'freq')">
+                <input type="button" value="ZP map" onclick="ReadAndPlot(ReadType = 'zpk',OutputType = 'zpmap')">
 
                 <br>
                 <label for="maxTime">maxTime </label>
@@ -185,7 +187,17 @@
             <canvas id="chart"></canvas>
         </div>
 
+        <canvas id="canvas" width="100px" height="100px"></canvas>
+        <script>
+            const canvas = document.getElementById('chart');
+            const ctxx = canvas.getContext('2d');
+            // const image = document.getElementById('source');
 
+            // image.addEventListener('load', e => {
+            //     ctxx.drawImage(image, 33, 71, 104, 124, 21, 20, 3, 104);
+            // });
+            // ctxx.drawImage(image, 21, 20, 10, 10);
+        </script>
     </section>
 
     <footer id="footer">

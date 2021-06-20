@@ -136,3 +136,107 @@ async function chartItFreq(a, b) {
 
     // myChart.destroy();
 }
+
+
+
+async function chartItzpmap(zeros, poles) {
+
+    const dataZeros = await getPZData(zeros);
+    const dataPoles = await getPZData(poles);
+    var ctx = document.getElementById('chart').getContext('2d');
+
+
+
+    var options = {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+
+            x: {
+                grid: {
+                    color: 'white',
+                },
+                ticks: {
+                    color: 'white',
+                    // precision: 0.01,
+                    // fixedStepSize: 0.01,
+                    // format: new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }),
+
+                    // Include a dollar sign in the ticks
+                    // callback: function(val, index, values) {
+                    //     return (val * 0.001 - 2).toFixed(3).toString();
+                    // }
+                },
+                suggestedMin: -2,
+                suggestedMax: 2
+            },
+
+            y: {
+                grid: {
+                    color: 'white',
+                },
+                ticks: {
+                    color: 'white',
+                },
+                suggestedMin: -2,
+                suggestedMax: 2
+            },
+
+
+
+        },
+
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+
+    };
+
+
+    myChart = new Chart(ctx, {
+
+        data: {
+            // labels: dataZeros.xValues,
+            labels: math.range(-2, 2, 0.001)._data.map(function(each_element) {
+                return Number(each_element.toFixed(3)).toString();
+            }),
+            datasets: [{
+                    type: 'line',
+                    label: 'Filter #1',
+                    data: dataPoles,
+                    backgroundColor: 'rgba(0, 255, 25, 1)',
+                    borderColor: 'rgba(0, 255, 25, 1)',
+                    borderWidth: 2,
+                    pointRadius: 10,
+                    pointStyle: 'crossRot',
+                    showLine: false, // no line shown
+
+                },
+                {
+                    type: 'line',
+                    label: 'Filter #1',
+                    // data: [{ x: -1.2, y: 0 },{ x: -1.2, y: 1 }],
+                    data: dataZeros,
+                    backgroundColor: 'rgb(54, 162, 235)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    borderWidth: 2,
+                    pointRadius: 5,
+                    pointStyle: 'circle',
+                    showLine: false, // no line shown
+
+                },
+                // {
+                //     type: 'polarArea',
+                //     label: 'Bar Dataset',
+                //     data: ['1']
+
+                // }
+            ]
+        },
+        options: options
+    });
+
+    // myChart.destroy();
+}

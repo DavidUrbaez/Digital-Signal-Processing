@@ -3,6 +3,8 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
     let a = [];
     let b = [];
 
+    let zeros = [];
+    let poles = [];
 
     if (ReadType == "coef") {
 
@@ -22,8 +24,7 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
         })
     } else if (ReadType == "zpk") {
 
-        let zeros = [];
-        let poles = [];
+
         let zerosInputs = document.querySelectorAll(".zeros-coef input[type='text']");
         let polesInputs = document.querySelectorAll(".poles-coef input[type='text']");
 
@@ -54,6 +55,8 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
         chartIt(a, b);
     } else if (OutputType == "freq") {
         chartItFreq(a, b);
+    } else if (OutputType == "zpmap") {
+        chartItzpmap(zeros, poles);
     }
 
 
