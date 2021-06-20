@@ -39,6 +39,14 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
         const Coef = getAandB(zeros, poles);
         a = Coef.a;
         b = Coef.b;
+
+    } else if (ReadType == "zpk-map") {
+
+        const zp = returnZP(zeros_real, zeros_complex, poles_real, poles_complex);
+
+        const Coef = getAandB(zp.zeros, zp.poles);
+        a = Coef.a;
+        b = Coef.b;
     }
 
     console.log("a: ", a)

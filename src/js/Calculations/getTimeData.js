@@ -21,7 +21,8 @@ async function getData(a, b) {
     }
 
 
-    const maxVal = parseFloat(document.querySelector(".controls input[type='text']").value);
+    const maxVal = parseFloat(document.getElementById("maxTime").value);
+    // const maxVal = 15;
     xs = math.range(0, maxVal)._data;
     ys = ys.slice(a.length - 1, maxVal + a.length - 1);
     // console.log(a.length);

@@ -1,0 +1,66 @@
+#DraggableDiv {
+    padding: 1vh 2vw;
+}
+
+.zpk-controls {
+    display: flex;
+    justify-content: center;
+}
+
+.zpk-controls p {
+    width: 105px;
+    margin: 1vh 1vw;
+}
+
+.zpk-controls .add {
+    height: 30px;
+    width: 30px;
+    background: rgb(83, 165, 1);
+    border: 1px solid rgb(35, 218, 35);
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.zpk-controls .add:hover {
+    /* background: rgb(105, 192, 18); */
+    box-shadow: 0px 4px 4px 0px #9a9a9abf;
+}
+
+.zpk-controls .remove {
+    height: 30px;
+    width: 30px;
+    background: rgb(129, 4, 4);
+    border: 1px solid rgb(241, 6, 6);
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.zpk-controls .remove:hover {
+    /* background: rgb(247, 40, 40); */
+    box-shadow: 0px 4px 4px 0px #9a9a9abf;
+}
+
+.controls-2 input[type="button"] {
+    background: rgb(29, 178, 236);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 6px 5px 9px 0px #383838;
+    width: 30%;
+    margin: 1vh 1vw;
+}
+
+.controls-2 input[type="button"].active {
+    background: rgb(105, 199, 236);
+}
+
+.controls-2 input[type="text"] {
+    width: 20%;
+    text-align: center;
+    background: gray;
+    border: none;
+    margin: 1vh 1vw;
+}
+
+.controls-2 input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.8);
+}

@@ -108,7 +108,7 @@ async function chartItFreq(a, b) {
                 },
                 title: {
                     display: true,
-                    text: 'Frequency [f/Fs]',
+                    text: 'Frequency [f /Fs]',
                     color: 'white',
                 }
             },

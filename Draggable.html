@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDS</title>
+
+
+    <!-- changeinput -->
+    <script src="src/js/ChangeInputs/changeinput.js"></script>
+
+
+    <script src="src/js/Calculations/code.js"></script>
+    <script src="src/js/Calculations/getFreqData.js"></script>
+    <script src="src/js/Calculations/getTimeData.js"></script>
+    <script src="src/js/Calculations/getZPmapData.js"></script>
+
+
+    <link rel="stylesheet" href="src/css/navbar_style.css">
+    <link rel="stylesheet" href="src/css/content.css">
+    <link rel="stylesheet" href="src/css/zpk.css">
+    <link rel="stylesheet" href="src/css/zpkdrag.css">
+
+    <!-- Load Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+
+    <!-- Load Icons -->
+    <script src="https://kit.fontawesome.com/95d7ee3267.js" crossorigin="anonymous"></script>
+
+    <!-- Math -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.js"></script>
+
+    <!-- P5JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js"></script> -->
+
+    <link rel="icon" href="src/img/icon.JPG" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h1>Procesamiento Digital de Señales</h1>
+
+            <button class="nav-toggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <ul class="menu-box">
+                <li>
+                    <a href="index.html" class="fa fa-home nav__link"><br> Home</a>
+                </li>
+
+                <li>
+                    <a href="https://davidurbaez.github.io/Projects/proyects.html" class="fas fa-laptop-code nav__link"> <br> My Projects</a>
+                </li>
+                <li>
+                    <a href="https://co.linkedin.com/in/david-urbaez-le%C3%B3n-6137861a7" class="far fa-address-card nav__link" target="_blank"> <br> Get in Touch</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <aside>
+
+
+            <div id="DraggableDiv"></div>
+
+
+
+            <div class="zpk-controls">
+
+                <div class="poles">
+                    <p>Real Pole: </p>
+                    <input type="button" value="+" id="add-real-pole" class="add">
+                    <input type="button" value="-" id="remove-real-pole" class="remove">
+
+                    <br>
+                    <p>Complex Pole: </p>
+                    <input type="button" value="+" id="add-complex-pole" class="add">
+                    <input type="button" value="-" id="remove-complex-pole" class="remove">
+                </div>
+
+                <div class="zeros">
+                    <p>Real zero: </p>
+                    <input type="button" value="+" id="add-real-zero" class="add">
+                    <input type="button" value="-" id="remove-real-zero" class="remove">
+
+                    <br>
+                    <p>Complex zero: </p>
+                    <input type="button" value="+" id="add-complex-zero" class="add">
+                    <input type="button" value="-" id="remove-complex-zero" class="remove">
+                </div>
+
+
+            </div>
+
+            <div class="controls-2">
+                <input type="button" value="Time Plot" onclick="ReadAndPlot('zpk-map', 'time'); changeInput2(this);" class="active" id="btn-time">
+                <input type="button" value="Frequency Plot" onclick="ReadAndPlot('zpk-map', 'freq');changeInput2(this);" class="" id="btn-freq">
+
+
+                <br>
+                <label for="maxTime">maxTime </label>
+                <input type="text" id="maxTime" value="15" onchange="ReadAndPlot('zpk-map', 'time')">
+            </div>
+        </aside>
+
+        <!-- PLOT -->
+        <div class="plot">
+            <canvas id="chart"></canvas>
+        </div>
+
+    </section>
+
+    <footer id="footer">
+        <div>
+            David Urbaez León - 2020 ®
+        </div>
+    </footer>
+    <!-- Draw Chart -->
+    <script src="src/js/Calculations/draw_chart.js"></script>
+
+    <!-- Add Data -->
+    <!-- <script src="src/js/ChangeInputs/add_coeffs.js"></script> -->
+
+    <!-- Remove Data -->
+    <!-- <script src="src/js/ChangeInputs/remove_coeffs.js"></script> -->
+
+    <!-- Hamburger script -->
+    <script src="src/js/Header/index.js"></script>
+
+    <!-- P5js  -->
+    <script src="src/js/draggable/draggable.js"></script>
+    <script src="src/js/draggable/sktech.js"></script>
+    <!-- buttons -->
+    <script src="src/js/draggable/buttons.js"></script>
+
+</body>
+
+</html>
