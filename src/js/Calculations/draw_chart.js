@@ -18,12 +18,16 @@ async function chartIt(a, b) {
         // responsive: true,
         // maintainAspectRatio: false,
         scales: {
-
             x: {
                 grid: {
                     color: 'white',
                 },
                 ticks: {
+                    color: 'white',
+                },
+                title: {
+                    display: true,
+                    text: 'Sample',
                     color: 'white',
                 }
             },
@@ -34,8 +38,16 @@ async function chartIt(a, b) {
                 },
                 ticks: {
                     color: 'white',
+                },
+                title: {
+                    display: true,
+                    text: 'Amplitud',
+                    color: 'white',
                 }
-            }
+
+            },
+
+
         },
 
         plugins: {
@@ -53,10 +65,10 @@ async function chartIt(a, b) {
             datasets: [{
                 label: 'Filter #1',
                 data: data.ys,
-                backgroundColor: 'rgba(0, 255, 25, 1)',
+                backgroundColor: 'rgba(0, 255, 25, 0.4)',
                 borderColor: 'rgba(0, 255, 25, 1)',
-                borderWidth: 1,
-
+                borderWidth: 2,
+                barPercentage: 0.2,
                 // pointStyle: 'circle',
 
             }]
@@ -93,6 +105,11 @@ async function chartItFreq(a, b) {
                     callback: function(val, index, values) {
                         return (val * 0.001).toFixed(3);
                     }
+                },
+                title: {
+                    display: true,
+                    text: 'Frequency [f/Fs]',
+                    color: 'white',
                 }
             },
 
@@ -101,6 +118,11 @@ async function chartItFreq(a, b) {
                     color: 'white',
                 },
                 ticks: {
+                    color: 'white',
+                },
+                title: {
+                    display: true,
+                    text: 'Amplitud',
                     color: 'white',
                 }
             },
@@ -173,7 +195,12 @@ async function chartItzpmap(zeros, poles) {
                     // }
                 },
                 suggestedMin: -2,
-                suggestedMax: 2
+                suggestedMax: 2,
+                title: {
+                    display: true,
+                    text: 'Real',
+                    color: 'white',
+                }
             },
 
             y: {
@@ -184,7 +211,12 @@ async function chartItzpmap(zeros, poles) {
                     color: 'white',
                 },
                 suggestedMin: -2,
-                suggestedMax: 2
+                suggestedMax: 2,
+                title: {
+                    display: true,
+                    text: 'Imag',
+                    color: 'white',
+                }
             },
 
 
