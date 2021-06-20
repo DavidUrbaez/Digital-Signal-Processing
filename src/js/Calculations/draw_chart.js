@@ -127,6 +127,11 @@ async function chartItFreq(a, b) {
                 borderColor: 'rgba(0, 255, 25, 1)',
                 borderWidth: 2,
                 pointRadius: 0,
+                fill: {
+                    target: 'origin',
+                    above: 'rgba(0, 255, 25, 0.2)', // Area will be red above the origin
+                    // below: 'rgba(0, 255, 25, 1)' // And blue below the origin
+                }
                 // pointStyle: 'line',
 
             }]
