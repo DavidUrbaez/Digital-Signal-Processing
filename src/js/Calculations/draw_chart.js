@@ -141,8 +141,10 @@ async function chartItFreq(a, b) {
 
 async function chartItzpmap(zeros, poles) {
 
-    // const data = await getFrequencyData(a, b);
+    const dataZeros = await getPZData(zeros);
+    const dataPoles = await getPZData(poles);
     var ctx = document.getElementById('chart').getContext('2d');
+
 
 
     var options = {
@@ -164,7 +166,9 @@ async function chartItzpmap(zeros, poles) {
                     // callback: function(val, index, values) {
                     //     return (val * 0.001).toFixed(3);
                     // }
-                }
+                },
+                // suggestedMin: -2,
+                // suggestedMax: 2
             },
 
             y: {
@@ -177,19 +181,12 @@ async function chartItzpmap(zeros, poles) {
             },
 
 
+
         },
 
         plugins: {
             legend: {
-                display: false,
-                labels: {
-                    usePointStyle: false,
-                }
-            }
-        },
-        elements: {
-            point: {
-                pointStyle: 'cross',
+                display: false
             }
         }
     };
@@ -198,33 +195,35 @@ async function chartItzpmap(zeros, poles) {
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            // labels: data.f,
-            datasets: [
-                // Zeros
-                {
-                    label: 'Filter #1',
-                    data: [{
-                        x: -10,
-                        y: 0
-                    }, {
-                        x: 0,
-                        y: 10
-                    }, {
-                        x: 10,
-                        y: 5
-                    }, {
-                        x: 0.5,
-                        y: 5.5
-                    }],
-                    showLine: false,
-                    backgroundColor: 'rgb(54, 162, 235)',
-                    pointStyle: 'circle',
-                    pointRadius: 6,
-                    // backgroundColor: 'rgb(255, 99, 132)',
-                    // pointStyle: 'rectRot',
-                    // pointRadius: 5,
-                },
+            // labels: dataZeros.xValues,
+            labels: math.range(-2, 2, 0.001)._data.map(function(each_element) {
+                return Number(each_element.toFixed(3)).toString();
+            }),
+            datasets: [{
 
+                    label: 'Filter #1',
+                    data: dataPoles,
+                    backgroundColor: 'rgba(0, 255, 25, 1)',
+                    borderColor: 'rgba(0, 255, 25, 1)',
+                    borderWidth: 2,
+                    pointRadius: 10,
+                    pointStyle: 'crossRot',
+                    showLine: false, // no line shown
+
+                },
+                {
+
+                    label: 'Filter #1',
+                    // data: [{ x: -1.2, y: 0 },{ x: -1.2, y: 1 }],
+                    data: dataZeros,
+                    backgroundColor: 'rgb(54, 162, 235)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    borderWidth: 2,
+                    pointRadius: 5,
+                    pointStyle: 'circle',
+                    showLine: false, // no line shown
+
+                }
             ]
         },
         options: options
