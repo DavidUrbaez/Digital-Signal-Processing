@@ -52,7 +52,7 @@
 
             <ul class="menu-box">
                 <li>
-                    <a href="https://davidurbaez.github.io/Projects/index.html" class="fa fa-home nav__link"><br> Home</a>
+                    <a href="index.html" class="fa fa-home nav__link"><br> Home</a>
                 </li>
 
                 <li>
@@ -97,8 +97,18 @@
                     <input type="button" value="-" id="remove-complex-zero" class="remove">
                 </div>
 
+
             </div>
 
+            <div class="controls-2">
+                <input type="button" value="Time Plot" onclick="ReadAndPlot('zpk-map', 'time'); changeInput2(this);" class="active" id="btn-time">
+                <input type="button" value="Frequency Plot" onclick="ReadAndPlot('zpk-map', 'freq');changeInput2(this);" class="" id="btn-freq">
+
+
+                <br>
+                <label for="maxTime">maxTime </label>
+                <input type="text" id="maxTime" value="15" onchange="ReadAndPlot('zpk-map', 'time')">
+            </div>
         </aside>
 
         <!-- PLOT -->
@@ -106,17 +116,6 @@
             <canvas id="chart"></canvas>
         </div>
 
-        <canvas id="canvas" width="100px" height="100px"></canvas>
-        <script>
-            const canvas = document.getElementById('chart');
-            const ctxx = canvas.getContext('2d');
-            // const image = document.getElementById('source');
-
-            // image.addEventListener('load', e => {
-            //     ctxx.drawImage(image, 33, 71, 104, 124, 21, 20, 3, 104);
-            // });
-            // ctxx.drawImage(image, 21, 20, 10, 10);
-        </script>
     </section>
 
     <footer id="footer">
@@ -125,7 +124,7 @@
         </div>
     </footer>
     <!-- Draw Chart -->
-    <!-- <script src="src/js/Calculations/draw_chart.js"></script> -->
+    <script src="src/js/Calculations/draw_chart.js"></script>
 
     <!-- Add Data -->
     <!-- <script src="src/js/ChangeInputs/add_coeffs.js"></script> -->
@@ -141,6 +140,7 @@
     <script src="src/js/draggable/sktech.js"></script>
     <!-- buttons -->
     <script src="src/js/draggable/buttons.js"></script>
+
 </body>
 
 </html>

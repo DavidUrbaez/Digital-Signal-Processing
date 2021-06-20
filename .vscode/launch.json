@@ -10,7 +10,7 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "d:\\LearningProcess\\Learning_HTML\\JavascriptLearning\\Filters\\index.html"
+            "file": "d:\\LearningProcess\\Learning_HTML\\JavascriptLearning\\Filters\\indexDrag.html"
         }
     ]
 }

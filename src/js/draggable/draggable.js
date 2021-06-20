@@ -13,6 +13,9 @@ class Draggable {
 
         this.Figtype = Figtype;
         this.complex = complex;
+
+        this.re = this.x - width / 2;
+        this.im = height / 2 - this.y;
     }
 
     over() {
