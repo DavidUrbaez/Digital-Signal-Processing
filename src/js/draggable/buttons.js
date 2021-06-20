@@ -59,8 +59,8 @@ function returnZP(zeros_real, zeros_complex, poles_real, poles_complex) {
         poles.push(math.complex(poles_complex[index].re, poles_complex[index].im))
         poles.push(math.complex(poles_complex[index].re, math.multiply(poles_complex[index].im, -1)))
     }
-    zeros = zeros.map(x => math.multiply(x, 1 / 100));
-    poles = poles.map(x => math.multiply(x, 1 / 100));
+    zeros = zeros.map(x => math.multiply(x, 1 / factor));
+    poles = poles.map(x => math.multiply(x, 1 / factor));
     return {
         zeros,
         poles
