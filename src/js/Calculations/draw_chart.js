@@ -148,8 +148,8 @@ async function chartItzpmap(zeros, poles) {
 
 
     var options = {
-        // responsive: true,
-        // maintainAspectRatio: false,
+        responsive: true,
+        maintainAspectRatio: true,
         scales: {
 
             x: {
@@ -164,11 +164,11 @@ async function chartItzpmap(zeros, poles) {
 
                     // Include a dollar sign in the ticks
                     // callback: function(val, index, values) {
-                    //     return (val * 0.001).toFixed(3);
+                    //     return (val * 0.001 - 2).toFixed(3).toString();
                     // }
                 },
-                // suggestedMin: -2,
-                // suggestedMax: 2
+                suggestedMin: -2,
+                suggestedMax: 2
             },
 
             y: {
@@ -177,7 +177,9 @@ async function chartItzpmap(zeros, poles) {
                 },
                 ticks: {
                     color: 'white',
-                }
+                },
+                suggestedMin: -2,
+                suggestedMax: 2
             },
 
 
@@ -188,19 +190,20 @@ async function chartItzpmap(zeros, poles) {
             legend: {
                 display: false
             }
-        }
+        },
+
     };
 
 
     myChart = new Chart(ctx, {
-        type: 'line',
+
         data: {
             // labels: dataZeros.xValues,
             labels: math.range(-2, 2, 0.001)._data.map(function(each_element) {
                 return Number(each_element.toFixed(3)).toString();
             }),
             datasets: [{
-
+                    type: 'line',
                     label: 'Filter #1',
                     data: dataPoles,
                     backgroundColor: 'rgba(0, 255, 25, 1)',
@@ -212,7 +215,7 @@ async function chartItzpmap(zeros, poles) {
 
                 },
                 {
-
+                    type: 'line',
                     label: 'Filter #1',
                     // data: [{ x: -1.2, y: 0 },{ x: -1.2, y: 1 }],
                     data: dataZeros,
@@ -223,7 +226,13 @@ async function chartItzpmap(zeros, poles) {
                     pointStyle: 'circle',
                     showLine: false, // no line shown
 
-                }
+                },
+                // {
+                //     type: 'polarArea',
+                //     label: 'Bar Dataset',
+                //     data: ['1']
+
+                // }
             ]
         },
         options: options

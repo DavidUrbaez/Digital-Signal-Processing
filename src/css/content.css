@@ -106,8 +106,13 @@ section aside .coef-container .coef .coef-remove:hover {
 
 .plot {
     width: 50%;
+    /* aspect-ratio: 1; */
     margin-left: 10px;
     /* height: 400px; */
+}
+
+.plot canvas {
+    aspect-ratio: 1;
 }
 
 .controls input[type="button"] {
@@ -146,6 +151,8 @@ section aside .coef-container .coef .coef-remove:hover {
     }
     .plot {
         width: 80vw;
+        aspect-ratio: 1/ 1;
+        margin: 0 auto;
         margin-bottom: 5vh;
     }
     footer {
