@@ -47,3 +47,18 @@ document.getElementById("poles-remove").addEventListener("click", function() {
 document.getElementById("zeros-remove").addEventListener("click", function() {
     removeInput("zeros")
 });
+
+// ZP button
+document.getElementById("Zpmap").addEventListener("click", function() {
+    if (actualInput == "zpk") {
+        ReadAndPlot(ReadType = 'zpk', OutputType = 'zpmap');
+
+        document.getElementById("Zpmap").value = "ZP map"
+        document.getElementById("Zpmap").style.padding = "1% 30%"
+
+    } else {
+        document.getElementById("Zpmap").value = "ZP map (!Change to Z-P input)"
+        document.getElementById("Zpmap").style.padding = "1% 5%"
+    }
+
+});
