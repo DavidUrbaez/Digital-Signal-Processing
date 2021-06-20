@@ -28,10 +28,12 @@ class Draggable {
         // Adjust location if being dragged
         if (this.dragging) {
             this.x = pmouseX + this.offsetX;
-            this.y = pmouseY + this.offsetY;
+            if (this.complex) {
+                this.y = pmouseY + this.offsetY;
+            }
 
             this.re = this.x - width / 2;
-            this.im = height / 2 - pmouseY;
+            this.im = height / 2 - this.y;
         }
     }
 
@@ -50,13 +52,18 @@ class Draggable {
 
             imageMode(CENTER);
             image(img, this.x, this.y, 30, 20);
-            image(img, this.x, height - this.y, 30, 20);
+            if (this.complex) {
+                image(img, this.x, height - this.y, 30, 20);
+            }
 
         } else if (this.Figtype == 'o') {
             fill(0, 100, 255, 60);
             stroke(0, 100, 255);
             ellipse(this.x, this.y, 20, 20);
-            ellipse(this.x, height - this.y, 20, 20);
+            if (this.complex) {
+                ellipse(this.x, height - this.y, 20, 20);
+            }
+
 
         }
 

@@ -59,13 +59,13 @@ function mousePressed() {
     for (let i = 0; i < zeros_complex.length; i++) {
         zeros_complex[i].pressed();
     }
-    for (let i = 0; i < zeros_complex.length; i++) {
+    for (let i = 0; i < poles_complex.length; i++) {
         poles_complex[i].pressed();
     }
     for (let i = 0; i < zeros_real.length; i++) {
         zeros_real[i].pressed();
     }
-    for (let i = 0; i < zeros_real.length; i++) {
+    for (let i = 0; i < poles_real.length; i++) {
         poles_real[i].pressed();
     }
     //shape2.pressed();
@@ -75,13 +75,13 @@ function mouseReleased() {
     for (let i = 0; i < zeros_complex.length; i++) {
         zeros_complex[i].released();
     }
-    for (let i = 0; i < zeros_complex.length; i++) {
+    for (let i = 0; i < poles_complex.length; i++) {
         poles_complex[i].released();
     }
     for (let i = 0; i < zeros_real.length; i++) {
         zeros_real[i].released();
     }
-    for (let i = 0; i < zeros_real.length; i++) {
+    for (let i = 0; i < poles_real.length; i++) {
         poles_real[i].released();
     }
 
