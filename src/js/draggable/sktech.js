@@ -53,7 +53,7 @@ function draw() {
     }
     //translate(width / 2, height / 2);
 
-    //console.log(pmouseX - width / 2);
+    // console.log(pmouseY);
 
 }
 
@@ -86,10 +86,15 @@ function mouseReleased() {
     for (let i = 0; i < poles_real.length; i++) {
         poles_real[i].released();
     }
-    if (document.querySelector("#btn-freq").classList.value == "active") {
-        ReadAndPlot("zpk-map", "freq");
-    } else {
-        ReadAndPlot("zpk-map", "time");
+
+
+    // Update Plot - - IMPORTANT!!
+    if (pmouseX > 0 && pmouseX < width && pmouseY > 0 && pmouseY < height) { // If in window
+        if (document.querySelector("#btn-freq").classList.value == "active") {
+            ReadAndPlot("zpk-map", "freq");
+        } else {
+            ReadAndPlot("zpk-map", "time");
+        }
     }
 
     //shape2.released();
