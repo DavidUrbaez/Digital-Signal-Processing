@@ -31,6 +31,7 @@ class Draggable {
         // Adjust location if being dragged
         if (this.dragging) {
             this.x = pmouseX + this.offsetX;
+
             if (this.complex) {
                 this.y = pmouseY + this.offsetY;
             }
@@ -64,6 +65,7 @@ class Draggable {
             stroke(0, 100, 255);
             ellipse(this.x, this.y, 20);
             if (this.complex) {
+                fill(255, 100, 255, 60);
                 ellipse(this.x, height - this.y, 20);
             }
 
@@ -78,8 +80,11 @@ class Draggable {
         if (dist(pmouseX, pmouseY, this.x, this.y) < this.r) {
             this.dragging = true;
             // If so, keep track of relative location of click to corner of rectangle
-            this.offsetX = this.x - pmouseX;
-            this.offsetY = this.y - pmouseY;
+            // this.offsetX = this.x - pmouseX;
+            // this.offsetY = this.y - pmouseY;
+        }
+        if (this.complex && (dist(pmouseX, pmouseY, this.x, height - this.y) < this.r)) {
+            this.dragging = true;
         }
     }
 
