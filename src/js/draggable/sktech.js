@@ -29,25 +29,25 @@ function draw() {
     translate(-width / 2, -height / 2);
 
     for (let i = 0; i < zeros_complex.length; i++) {
-        zeros_complex[i].over();
+        // zeros_complex[i].over();
         zeros_complex[i].update();
         zeros_complex[i].show();
     }
 
     for (let i = 0; i < poles_complex.length; i++) {
-        poles_complex[i].over();
+        // poles_complex[i].over();
         poles_complex[i].update();
         poles_complex[i].show();
     }
 
     for (let i = 0; i < zeros_real.length; i++) {
-        zeros_real[i].over();
+        // zeros_real[i].over();
         zeros_real[i].update();
         zeros_real[i].show();
     }
 
     for (let i = 0; i < poles_real.length; i++) {
-        poles_real[i].over();
+        // poles_real[i].over();
         poles_real[i].update();
         poles_real[i].show();
     }

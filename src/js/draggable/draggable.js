@@ -4,12 +4,11 @@
 class Draggable {
     constructor(x, y, r, Figtype, complex) {
         this.dragging = false; // Is the object being dragged?
-        this.rollover = false; // Is the mouse over the ellipse?
+
         this.x = x;
         this.y = y;
         this.r = r;
-        this.offsetX = 0;
-        this.offsetY = 0;
+
 
         this.Figtype = Figtype;
         this.complex = complex;
@@ -18,21 +17,13 @@ class Draggable {
         this.im = height / 2 - this.y;
     }
 
-    over() {
-        // Is mouse over object
-        if (dist(pmouseX, pmouseY, this.x, this.y) < this.r) {
-            this.rollover = true;
-        } else {
-            this.rollover = false;
-        }
-    }
-
     update() {
         // Adjust location if being dragged
         if (this.dragging) {
-            this.x = pmouseX + this.offsetX;
+            this.x = pmouseX;
+
             if (this.complex) {
-                this.y = pmouseY + this.offsetY;
+                this.y = pmouseY;
             }
 
             this.re = this.x - width / 2;
@@ -44,11 +35,9 @@ class Draggable {
         stroke(0);
         // Different fill based on state
         if (this.dragging) {
-            fill(50);
-        } else if (this.rollover) {
-            fill(100);
+            fill(0, 100, 255, 20);
         } else {
-            fill(175, 200);
+            fill(0, 100, 255, 60);
         }
         //ellipse(this.x, this.y, this.r);
         if (this.Figtype == 'x') {
@@ -60,16 +49,17 @@ class Draggable {
             }
 
         } else if (this.Figtype == 'o') {
-            fill(0, 100, 255, 60);
+
             stroke(0, 100, 255);
             ellipse(this.x, this.y, 20);
             if (this.complex) {
+                // fill(255, 100, 255, 60);
                 ellipse(this.x, height - this.y, 20);
             }
 
 
         }
-
+        // console.log(this.offsetX);
         // console.log(this.x-width/2)
     }
 
@@ -78,8 +68,11 @@ class Draggable {
         if (dist(pmouseX, pmouseY, this.x, this.y) < this.r) {
             this.dragging = true;
             // If so, keep track of relative location of click to corner of rectangle
-            this.offsetX = this.x - pmouseX;
-            this.offsetY = this.y - pmouseY;
+            // this.offsetX = this.x - pmouseX;
+            // this.offsetY = this.y - pmouseY;
+        }
+        if (this.complex && (dist(pmouseX, pmouseY, this.x, height - this.y) < this.r)) {
+            this.dragging = true;
         }
     }
 
