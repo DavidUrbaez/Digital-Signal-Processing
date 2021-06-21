@@ -1,4 +1,4 @@
-async function getData(a, b) {
+async function getResponseData(a, b) {
 
     // const a = [1, -0.2, -0.25, 0.05];
     // const b = [2, 1.5];
@@ -17,7 +17,15 @@ async function getData(a, b) {
 
     xs[b.length - 1] = 1;
     for (let index = 0; index < N - a.length; index++) {
-        ys[index + a.length - 1] = math.dot(b.slice().reverse(), xs.slice(index, b.length + index)) + math.dot(ys.slice(index, index + a.length - 1), a.slice(1).reverse().map(x => x * -1))
+        if (a.length > 1) { // Normal Calculation Direct Form I
+
+            ys[index + a.length - 1] = math.dot(b.slice().reverse(), xs.slice(index, b.length + index)) + math.dot(ys.slice(index, index + a.length - 1), a.slice(1).reverse().map(x => x * -1))
+
+        } else { // No poles solution
+
+            ys[index + a.length - 1] = math.dot(b.slice().reverse(), xs.slice(index, b.length + index))
+
+        }
     }
 
 

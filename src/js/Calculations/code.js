@@ -1,4 +1,7 @@
+// Important Function --> Read and Plot
 function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
+    console.log("  -------------------  ")
+    console.log("  |    New Simul    | ")
 
     let a = [];
     let b = [];
@@ -6,6 +9,11 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
     let zeros = [];
     let poles = [];
 
+
+    /////////////////////////////////////////////////////////////
+    //              Return a and b lists!!
+
+    // If input data is Coef values
     if (ReadType == "coef") {
 
         let aCoeffs = document.querySelectorAll(".a-coef input[type='text']");
@@ -22,8 +30,9 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
             b.push(parseFloat(bCoeff.value));
 
         })
-    } else if (ReadType == "zpk") {
-
+    }
+    // If input data is zpk values
+    else if (ReadType == "zpk") {
 
         let zerosInputs = document.querySelectorAll(".zeros-coef input[type='text']");
         let polesInputs = document.querySelectorAll(".poles-coef input[type='text']");
@@ -40,11 +49,20 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
         a = Coef.a;
         b = Coef.b;
 
-    } else if (ReadType == "zpk-map") {
+    }
+    // If input data is zpk draggable
+    else if (ReadType == "zpk-map") {
 
         const zp = returnZP(zeros_real, zeros_complex, poles_real, poles_complex);
 
         const Coef = getAandB(zp.zeros, zp.poles);
+
+        console.log("zeros: ", zp.zeros)
+        console.log("poles: ", zp.poles)
+
+        //normalize
+        // a = Coef.a.map(x => math.multiply(x, 1 / zp.polesMag));
+        // b = Coef.b.map(x => math.multiply(x, 1 / zp.zerosMag));
         a = Coef.a;
         b = Coef.b;
     }
@@ -52,11 +70,15 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
     console.log("a: ", a)
     console.log("b: ", b)
 
+    //////////////////////////////////////////////////
+    //          Destroy previous chart
+
     if (myChart) {
         myChart.destroy();
     }
 
-
+    //////////////////////////////////////////////////
+    //          create new chart
 
 
     if (OutputType == "time") {
@@ -75,38 +97,51 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
 
 function getAandB(z, p) {
     // Returns a and b from z,p
-
+    let b = [];
     //Zeros with b
+    if (z.length > 0) {
 
-    let conv1 = [1, math.multiply(z[0], -1)];
-    if (z.length > 1) {
-        for (let i = 1; i < z.length; i++) {
-            conv1 = convolution(conv1, [1, math.multiply(z[i], -1)]);
+        let conv1 = [1, math.multiply(z[0], -1)];
+
+        if (z.length > 1) {
+            for (let i = 1; i < z.length; i++) {
+                conv1 = convolution(conv1, [1, math.multiply(z[i], -1)]);
+            }
         }
+
+        b = conv1.map(x => {
+            if (typeof x == 'object') {
+                return x.re;
+            } else {
+                return x;
+            }
+        });
+    } else {
+        b = [1];
     }
-    let b = conv1.map(x => {
-        if (typeof x == 'object') {
-            return x.re;
-        } else {
-            return x;
-        }
-    });
 
 
     // Poles with a
-    let conv2 = [1, math.multiply(p[0], -1)];
-    if (p.length > 1) {
-        for (let i = 1; i < p.length; i++) {
-            conv2 = convolution(conv2, [1, math.multiply(p[i], -1)]);
+    let a = [];
+    if (p.length > 0) {
+        let conv2 = [1, math.multiply(p[0], -1)];
+
+        if (p.length > 1) {
+            for (let i = 1; i < p.length; i++) {
+                conv2 = convolution(conv2, [1, math.multiply(p[i], -1)]);
+            }
         }
+
+        a = conv2.map(x => {
+            if (typeof x == 'object') {
+                return x.re;
+            } else {
+                return x;
+            }
+        });
+    } else {
+        a = [1];
     }
-    let a = conv2.map(x => {
-        if (typeof x == 'object') {
-            return x.re;
-        } else {
-            return x;
-        }
-    });
 
     //with a and b return data
     return {

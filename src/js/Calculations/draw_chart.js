@@ -10,7 +10,8 @@ var myChart;
 
 async function chartIt(a, b) {
 
-    const data = await getData(a, b);
+    const data = await getResponseData(a, b);
+
     var ctx = document.getElementById('chart').getContext('2d');
 
 
@@ -82,7 +83,8 @@ async function chartIt(a, b) {
 
 async function chartItFreq(a, b) {
 
-    const data = await getFrequencyData(a, b);
+    const data = await getFrequencyResponseData(a, b);
+
     var ctx = document.getElementById('chart').getContext('2d');
 
 
@@ -168,8 +170,8 @@ async function chartItFreq(a, b) {
 
 async function chartItzpmap(zeros, poles) {
 
-    const dataZeros = await getPZData(zeros);
-    const dataPoles = await getPZData(poles);
+    const dataZeros = await get_Pole_or_Zero_ResponseData(zeros);
+    const dataPoles = await get_Pole_or_Zero_ResponseData(poles);
     var ctx = document.getElementById('chart').getContext('2d');
 
 

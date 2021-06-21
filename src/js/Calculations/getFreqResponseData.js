@@ -1,4 +1,4 @@
-async function getFrequencyData(a, b) {
+async function getFrequencyResponseData(a, b) {
 
 
 

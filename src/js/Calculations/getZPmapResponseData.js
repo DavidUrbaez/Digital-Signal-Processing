@@ -1,4 +1,4 @@
-async function getPZData(values) {
+async function get_Pole_or_Zero_ResponseData(values) {
     let outData = []
 
     values.forEach(value => {

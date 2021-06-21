@@ -5,6 +5,7 @@ let poles_complex = [];
 
 let zeros_real = [];
 let poles_real = [];
+let factor = 150;
 
 function setup() {
     rectMode(CENTER);
@@ -12,8 +13,8 @@ function setup() {
     myCanvas.parent("DraggableDiv");
     img = loadImage('src/img/cross.png');
 
-    zeros_complex.push(new Draggable(98.96 + width / 2, height / 2 - 14.4, 20, 'o', true));
-    zeros_real.push(new Draggable(100 + width / 2, height / 2, 20, 'o', false));
+    zeros_complex.push(new Draggable(factor * 0.9896 + width / 2, height / 2 - factor * 0.144, 20, 'o', true));
+    zeros_real.push(new Draggable(factor * 1 + width / 2, height / 2, 20, 'o', false));
 
 
 
@@ -52,7 +53,7 @@ function draw() {
     }
     //translate(width / 2, height / 2);
 
-    //console.log(pmouseX - width / 2);
+    // console.log(pmouseY);
 
 }
 
@@ -85,10 +86,15 @@ function mouseReleased() {
     for (let i = 0; i < poles_real.length; i++) {
         poles_real[i].released();
     }
-    if (document.querySelector("#btn-freq").classList.value == "active") {
-        ReadAndPlot("zpk-map", "freq");
-    } else {
-        ReadAndPlot("zpk-map", "time");
+
+
+    // Update Plot - - IMPORTANT!!
+    if (pmouseX > 0 && pmouseX < width && pmouseY > 0 && pmouseY < height) { // If in window
+        if (document.querySelector("#btn-freq").classList.value == "active") {
+            ReadAndPlot("zpk-map", "freq");
+        } else {
+            ReadAndPlot("zpk-map", "time");
+        }
     }
 
     //shape2.released();
@@ -113,5 +119,5 @@ function drawBack() {
     }
     strokeWeight(1);
     fill(0, 255, 0, 20);
-    ellipse(0, 0, 200);
+    ellipse(0, 0, factor * 2);
 }
