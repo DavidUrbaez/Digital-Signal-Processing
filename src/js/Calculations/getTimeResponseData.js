@@ -6,7 +6,7 @@ async function getResponseData(a, b) {
     // const a = [1.0000, -1.1480, 1.5107, 0.2703]
     // const b = [0.1808, 0.1047, 0.3107, 0.1047, 0.1808]
 
-    const N = 70;
+    const N = parseFloat(document.getElementById("maxTime").value) + a.length + b.length;
     let xs = new Array(N).fill(0);
 
     if (b.length > a.length) {
@@ -29,7 +29,7 @@ async function getResponseData(a, b) {
     }
 
 
-    const maxVal = parseFloat(document.getElementById("maxTime").value);
+    const maxVal = parseFloat(document.getElementById("maxTime").value) + 1;
     // const maxVal = 15;
     xs = math.range(0, maxVal)._data;
     ys = ys.slice(a.length - 1, maxVal + a.length - 1);
