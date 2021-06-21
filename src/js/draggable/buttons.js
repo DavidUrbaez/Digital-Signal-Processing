@@ -33,3 +33,13 @@ document.getElementById("remove-real-zero").onclick = function() {
 };
 
 ////////////////////////////////////////////////////////////////////////////
+
+
+const allbuttons = document.querySelectorAll('.zpk-controls .add,.zpk-controls .remove');
+
+
+for (const button of allbuttons) {
+    button.addEventListener('click', function(event) {
+        ReadAndPlot('zpk-map', actualOutput);
+    })
+}
