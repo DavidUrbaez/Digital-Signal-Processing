@@ -19,6 +19,7 @@ class Draggable {
 
     update() {
         // Adjust location if being dragged
+
         if (this.dragging) {
             this.x = pmouseX;
 
@@ -67,7 +68,7 @@ class Draggable {
         // Did I click on the rectangle?
         if (dist(pmouseX, pmouseY, this.x, this.y) < this.r) {
             this.dragging = true;
-            // If so, keep track of relative location of click to corner of rectangle
+            // If so, keep track of relative location of click to corner of rectangle (maybe this could create a problem- be careful)
             // this.offsetX = this.x - pmouseX;
             // this.offsetY = this.y - pmouseY;
         }
