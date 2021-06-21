@@ -1,3 +1,4 @@
+// Important Function --> Read and Plot
 function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
     console.log("  -------------------  ")
     console.log("  |    New Simul    | ")
@@ -8,6 +9,11 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
     let zeros = [];
     let poles = [];
 
+
+    /////////////////////////////////////////////////////////////
+    //              Return a and b lists!!
+
+    // If input data is Coef values
     if (ReadType == "coef") {
 
         let aCoeffs = document.querySelectorAll(".a-coef input[type='text']");
@@ -24,8 +30,9 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
             b.push(parseFloat(bCoeff.value));
 
         })
-    } else if (ReadType == "zpk") {
-
+    }
+    // If input data is zpk values
+    else if (ReadType == "zpk") {
 
         let zerosInputs = document.querySelectorAll(".zeros-coef input[type='text']");
         let polesInputs = document.querySelectorAll(".poles-coef input[type='text']");
@@ -42,7 +49,9 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
         a = Coef.a;
         b = Coef.b;
 
-    } else if (ReadType == "zpk-map") {
+    }
+    // If input data is zpk draggable
+    else if (ReadType == "zpk-map") {
 
         const zp = returnZP(zeros_real, zeros_complex, poles_real, poles_complex);
 
@@ -61,11 +70,15 @@ function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
     console.log("a: ", a)
     console.log("b: ", b)
 
+    //////////////////////////////////////////////////
+    //          Destroy previous chart
+
     if (myChart) {
         myChart.destroy();
     }
 
-
+    //////////////////////////////////////////////////
+    //          create new chart
 
 
     if (OutputType == "time") {

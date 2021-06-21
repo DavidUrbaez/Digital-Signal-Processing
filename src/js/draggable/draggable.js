@@ -62,9 +62,9 @@ class Draggable {
         } else if (this.Figtype == 'o') {
             fill(0, 100, 255, 60);
             stroke(0, 100, 255);
-            ellipse(this.x, this.y, 20, 20);
+            ellipse(this.x, this.y, 20);
             if (this.complex) {
-                ellipse(this.x, height - this.y, 20, 20);
+                ellipse(this.x, height - this.y, 20);
             }
 
 

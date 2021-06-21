@@ -1,4 +1,4 @@
-async function getData(a, b) {
+async function getResponseData(a, b) {
 
     // const a = [1, -0.2, -0.25, 0.05];
     // const b = [2, 1.5];
