@@ -1,5 +1,7 @@
 // Important Function --> Read and Plot
 function ReadAndPlot(ReadType = actualInput, OutputType = 'time') {
+
+    console.clear()
     console.log("  -------------------  ")
     console.log("  |    New Simul    | ")
 
