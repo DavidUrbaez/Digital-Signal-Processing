@@ -23,7 +23,7 @@ function changeInput(element) {
     }
 }
 
-function changeInput2(element) {
+function changeOutput(element) {
     element1 = document.querySelector("#btn-time");
     element2 = document.querySelector("#btn-freq");
     element1.classList.toggle("active");
