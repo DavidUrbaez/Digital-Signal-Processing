@@ -17,7 +17,9 @@ section.content {
 section aside {
     margin: 10px;
     /* margin-right: 10vw; */
-    background-color: rgba(128, 128, 128, 0.5);
+    /* background-color: #80808080; */
+    background: linear-gradient( 90deg, #80808080, #ffffff38, #80808080);
+    box-shadow: #000000b5 18px 19px 18px;
     border-radius: 20px;
     /* width: 40vw; */
     padding: 1%;

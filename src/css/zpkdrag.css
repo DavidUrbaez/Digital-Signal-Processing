@@ -2,6 +2,15 @@
     padding: 1vh 2vw;
 }
 
+#DraggableDiv canvas {
+    border-radius: 20px;
+}
+
+
+/* section aside {
+    box-shadow: rgb(0 0 0 / 72%) 18px 19px 18px 1;
+} */
+
 .zpk-controls {
     display: flex;
     justify-content: center;
