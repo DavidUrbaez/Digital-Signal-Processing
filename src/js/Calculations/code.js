@@ -123,10 +123,11 @@ function getAandB(z, p) {
     }
 
     // Error for origen zeros
-    if (p.length > z.length) {
 
-        b = new Array(p.length - z.length).fill(0).concat(b);
-    }
+    // if (p.length > z.length) {
+
+    //     b = new Array(p.length - z.length).fill(0).concat(b);
+    // }
     console.log(b)
 
     // Poles with a
