@@ -119,7 +119,7 @@ function getAandB(z, p) {
             }
         });
     } else {
-        b = [0, 1];
+        b = [1, 0];
     }
 
 
@@ -142,7 +142,7 @@ function getAandB(z, p) {
             }
         });
     } else {
-        a = [0, 1];
+        a = [1, 0];
     }
 
     //with a and b return data
