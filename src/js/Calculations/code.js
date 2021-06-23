@@ -119,9 +119,15 @@ function getAandB(z, p) {
             }
         });
     } else {
-        b = [1, 0];
+        b = [1]
     }
 
+    // Error for origen zeros
+    if (p.length > z.length) {
+
+        b = new Array(p.length - z.length).fill(0).concat(b);
+    }
+    console.log(b)
 
     // Poles with a
     let a = [];
@@ -142,7 +148,7 @@ function getAandB(z, p) {
             }
         });
     } else {
-        a = [1, 0];
+        a = [1]
     }
 
     //with a and b return data
