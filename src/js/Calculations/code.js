@@ -128,7 +128,7 @@ function getAandB(z, p) {
 
     //     b = new Array(p.length - z.length).fill(0).concat(b);
     // }
-    console.log(b)
+    //console.log(b)
 
     // Poles with a
     let a = [];
