@@ -33,12 +33,3 @@ function changeOutput(element) {
     element.className = 'active';
 
 }
-
-function changeOutput(element) {
-    element1 = document.querySelector("#btn-time");
-    element2 = document.querySelector("#btn-freq");
-    element1.className = '';
-    element2.className = '';
-    element.className = 'active';
-
-}
