@@ -5,13 +5,14 @@ let poles_complex = [];
 
 let zeros_real = [];
 let poles_real = [];
-let factor = 150;
+let factor;
 
 function setup() {
     rectMode(CENTER);
     var myCanvas = createCanvas(400, 400);
     myCanvas.parent("DraggableDiv");
     img = loadImage('src/img/cross.png');
+    factor = 150;
 
     zeros_complex.push(new Draggable(factor * 0.9896 + width / 2, height / 2 - factor * 0.144, 20, 'o', true));
     zeros_real.push(new Draggable(factor * 1 + width / 2, height / 2, 20, 'o', false));
@@ -110,9 +111,9 @@ function drawBack() {
     line(0, -height / 2, 0, height / 2);
     line(-width / 2, 0, width / 2, 0);
     strokeWeight(0.1);
-    let ratio = 20; //1000 px -> 1
+    let ratio = Math.round((20 / 150) * factor); //1000 px -> 1
 
-    for (let i = -10; i <= 10; i++) {
+    for (let i = -width / (2 * ratio); i <= width / (2 * ratio); i++) {
 
         line(ratio * i, -height / 2, ratio * i, height / 2);
         line(-width / 2, ratio * i, width / 2, ratio * i);
@@ -120,4 +121,51 @@ function drawBack() {
     strokeWeight(1);
     fill(0, 255, 0, 20);
     ellipse(0, 0, factor * 2);
+}
+
+let prevFactor = 150;
+let prevHalfWindowSize = 200;
+
+function windowResized() {
+
+
+    const zpk = zeros_complex.concat(zeros_real).concat(poles_complex).concat(poles_real);
+
+    if (windowWidth < 500) {
+
+        factor = 100;
+
+        resizeCanvas(250, 250);
+
+
+        for (let i = 0; i < zpk.length; i++) {
+
+            zpk[i].x = width / 2 + (zpk[i].x - prevHalfWindowSize) * factor / prevFactor;
+            zpk[i].y = height / 2 - (prevHalfWindowSize - zpk[i].y) * factor / prevFactor;
+        }
+
+
+        prevFactor = 100;
+        prevHalfWindowSize = 125;
+
+
+    } else {
+
+        factor = 150;
+
+        resizeCanvas(400, 400);
+
+        for (let i = 0; i < zpk.length; i++) {
+
+            zpk[i].x = width / 2 + (zpk[i].x - prevHalfWindowSize) * factor / prevFactor;
+            zpk[i].y = height / 2 - (prevHalfWindowSize - zpk[i].y) * factor / prevFactor;
+            // console.log(zeros_complex[i].y)
+        }
+
+
+        prevFactor = 150;
+        prevHalfWindowSize = 200;
+
+    }
+
 }

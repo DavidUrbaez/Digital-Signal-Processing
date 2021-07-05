@@ -56,6 +56,7 @@
     box-shadow: 6px 5px 9px 0px #383838;
     width: 30%;
     margin: 1vh 1vw;
+    padding: 1vh 1vw;
 }
 
 .controls-2 input[type="button"].active {
@@ -72,4 +73,15 @@
 
 .controls-2 input[type="text"]:focus {
     background: rgba(255, 255, 255, 0.8);
+}
+
+@media screen and (max-width: 500px) {
+    .zpk-controls p {
+        width: 40vw;
+    }
+    .controls-2 input[type="button"] {
+        display: block;
+        margin: 2vh auto;
+        width: 70vw;
+    }
 }
