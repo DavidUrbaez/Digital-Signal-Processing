@@ -1,9 +1,31 @@
 #DraggableDiv {
+    position: relative;
     padding: 1vh 2vw;
 }
 
 #DraggableDiv canvas {
     border-radius: 20px;
+}
+
+#DraggableDiv #init-message {
+    /* margin: 0 auto; */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#DraggableDiv #init-message p {
+    background: rgba(71, 71, 71, 0.692);
+    border-radius: 30px;
+    border: 4px solid rgb(29, 29, 29);
+    /* height: 100px; */
+    line-height: 100px;
+    width: 80%;
 }
 
 
