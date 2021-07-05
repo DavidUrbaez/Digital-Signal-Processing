@@ -42,6 +42,7 @@ function setup() {
     poles_complex.push(new Draggable(55.37 + width / 2, height / 2 - 42.43, 20, 'x', true));
     poles_real.push(new Draggable(47.27 + width / 2, height / 2, 20, 'x', false));
 
+    document.getElementById('init-message').style.display = 'flex'; // Start init Message
 }
 
 function draw() {
@@ -79,6 +80,7 @@ function draw() {
 }
 
 function mousePressed() {
+
     for (let i = 0; i < zeros_complex.length; i++) {
         zeros_complex[i].pressed();
     }
@@ -111,7 +113,10 @@ function mouseReleased() {
 
     // Update Plot - - IMPORTANT!!
     if (pmouseX > 0 && pmouseX < width && pmouseY > 0 && pmouseY < height) { // If in window
-        if (document.querySelector("#btn-freq").classList.value == "active") {
+
+        document.getElementById('init-message').style.display = 'none'; // delete Message
+
+        if (document.querySelector("#btn-freq").classList.value == "active") { // IMPORTANT! RUN PLOT
             ReadAndPlot("zpk-map", "freq");
         } else {
             ReadAndPlot("zpk-map", "time");
