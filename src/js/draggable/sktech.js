@@ -7,12 +7,29 @@ let zeros_real = [];
 let poles_real = [];
 let factor;
 
+let prevFactor;
+let prevHalfWindowSize;
+
 function setup() {
     rectMode(CENTER);
-    var myCanvas = createCanvas(400, 400);
+
+    if (windowWidth > 500) {
+        factor = 150;
+        var myCanvas = createCanvas(400, 400);
+
+        prevFactor = 150
+        prevHalfWindowSize = 200;
+    } else {
+        factor = 100;
+        var myCanvas = createCanvas(250, 250);
+
+        prevFactor = 100
+        prevHalfWindowSize = 150;
+    }
+
     myCanvas.parent("DraggableDiv");
     img = loadImage('src/img/cross.png');
-    factor = 150;
+
 
     zeros_complex.push(new Draggable(factor * 0.9896 + width / 2, height / 2 - factor * 0.144, 20, 'o', true));
     zeros_real.push(new Draggable(factor * 1 + width / 2, height / 2, 20, 'o', false));
@@ -111,20 +128,21 @@ function drawBack() {
     line(0, -height / 2, 0, height / 2);
     line(-width / 2, 0, width / 2, 0);
     strokeWeight(0.1);
-    let ratio = Math.round((20 / 150) * factor); //1000 px -> 1
 
-    for (let i = -width / (2 * ratio); i <= width / (2 * ratio); i++) {
+    let ratio = width / 20;
+
+    for (let i = -10; i <= 10; i++) {
 
         line(ratio * i, -height / 2, ratio * i, height / 2);
         line(-width / 2, ratio * i, width / 2, ratio * i);
     }
+
     strokeWeight(1);
     fill(0, 255, 0, 20);
     ellipse(0, 0, factor * 2);
 }
 
-let prevFactor = 150;
-let prevHalfWindowSize = 200;
+
 
 function windowResized() {
 
@@ -159,7 +177,7 @@ function windowResized() {
 
             zpk[i].x = width / 2 + (zpk[i].x - prevHalfWindowSize) * factor / prevFactor;
             zpk[i].y = height / 2 - (prevHalfWindowSize - zpk[i].y) * factor / prevFactor;
-            // console.log(zeros_complex[i].y)
+
         }
 
 
