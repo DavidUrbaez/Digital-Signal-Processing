@@ -21,14 +21,14 @@ function setup() {
         prevHalfWindowSize = 200;
     } else {
         factor = 100;
-        var myCanvas = createCanvas(250, 250);
+        var myCanvas = createCanvas(260, 260);
 
         prevFactor = 100
-        prevHalfWindowSize = 150;
+        prevHalfWindowSize = 130;
     }
 
     myCanvas.parent("DraggableDiv");
-    img = loadImage('src/img/cross.png');
+    img = loadImage('https://raw.githubusercontent.com/DavidUrbaez/Digital-Signal-Processing/master/src/img/cross.png');
 
 
     zeros_complex.push(new Draggable(factor * 0.9896 + width / 2, height / 2 - factor * 0.144, 20, 'o', true));
@@ -132,9 +132,10 @@ function drawBack() {
     let ratio = width / 20;
 
     for (let i = -10; i <= 10; i++) {
-
+        //strokeWeight(0);
         line(ratio * i, -height / 2, ratio * i, height / 2);
         line(-width / 2, ratio * i, width / 2, ratio * i);
+        // console.log(ratio * i)
     }
 
     strokeWeight(1);
@@ -153,7 +154,7 @@ function windowResized() {
 
         factor = 100;
 
-        resizeCanvas(250, 250);
+        resizeCanvas(260, 260);
 
 
         for (let i = 0; i < zpk.length; i++) {
@@ -164,7 +165,7 @@ function windowResized() {
 
 
         prevFactor = 100;
-        prevHalfWindowSize = 125;
+        prevHalfWindowSize = 130;
 
 
     } else {
