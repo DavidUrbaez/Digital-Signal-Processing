@@ -27,10 +27,13 @@ function setup() {
         prevHalfWindowSize = 130;
     }
 
+    // insert canvas in Div
     myCanvas.parent("DraggableDiv");
+
+    // load image for poles
     img = loadImage('https://raw.githubusercontent.com/DavidUrbaez/Digital-Signal-Processing/master/src/img/cross.png');
 
-
+    // init zeros and poles 
     zeros_complex.push(new Draggable(factor * 0.9896 + width / 2, height / 2 - factor * 0.144, 20, 'o', true));
     zeros_real.push(new Draggable(factor * 1 + width / 2, height / 2, 20, 'o', false));
 
@@ -119,6 +122,7 @@ function mouseReleased() {
 }
 
 function drawBack() {
+    // Function that draws background
     background(0);
 
     translate(width / 2, height / 2);
@@ -144,6 +148,7 @@ function drawBack() {
 }
 
 
+// Update for small Resized
 
 function windowResized() {
 
