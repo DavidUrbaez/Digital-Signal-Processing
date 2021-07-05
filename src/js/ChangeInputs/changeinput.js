@@ -1,7 +1,7 @@
 let actualInput = 'coef';
 
 
-let actualOutput = 'time';
+// let actualOutput = 'time';
 
 function changeInput(element) {
     element1 = document.querySelector("#btn-coef");
@@ -23,15 +23,13 @@ function changeInput(element) {
     }
 }
 
+
+
 function changeOutput(element) {
     element1 = document.querySelector("#btn-time");
     element2 = document.querySelector("#btn-freq");
-    element1.classList.toggle("active");
-    element2.classList.toggle("active");
+    element1.className = '';
+    element2.className = '';
+    element.className = 'active';
 
-    if (actualOutput == 'time') {
-        actualOutput = 'freq';
-    } else if (actualOutput == 'freq') {
-        actualOutput = 'time';
-    }
 }
