@@ -6,7 +6,7 @@ section.content {
     /* position: absolute; */
     /* top: 10vh; */
     width: 98%;
-    margin: 1%;
+    margin: 0 1%;
     /* padding: 5vh; */
     display: flex;
     justify-content: space-around;
