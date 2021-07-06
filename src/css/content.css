@@ -12,7 +12,7 @@ section.content {
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 10vh;
+    margin-top: max(10vh, 4rem);
     min-height: 80vh;
 }
 
