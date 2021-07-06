@@ -74,7 +74,7 @@
     <section class="content">
         <aside>
 
-
+            <!-- P5js Script and init message -->
             <div id="DraggableDiv">
                 <div id="init-message">
                     <p> Drag poles or zeros to start</p>
@@ -82,6 +82,7 @@
             </div>
 
 
+            <!-- Zpk Controls for adding or removing zeros or poles -->
 
             <div class="zpk-controls">
 
@@ -111,9 +112,21 @@
             </div>
 
             <div class="controls-2">
-                <input type="button" value="Time Plot" onclick="ReadAndPlot('zpk-map', 'time'); changeOutput(this);" class="active" id="btn-time">
-                <input type="button" value="Frequency Plot" onclick="ReadAndPlot('zpk-map', 'freq');changeOutput(this);" class="" id="btn-freq">
+                <input type="button" value="Time Plot" onclick="ReadAndPlot('zpk-map', 'time'); changeOutput(this); actualOutput='time';" class="active" id="btn-time">
+                <input type="button" value="Frequency Plot" onclick="ReadAndPlot('zpk-map', 'freq');changeOutput(this); actualOutput='freq';" class="" id="btn-freq">
 
+                <!-- ReadAndPlot is the main function, it has 2 inputs
+                        ReadAndPlot(ReadType, OutputType) 
+                            ReadType has 3 options:
+                                - 'coef'    -> for index.html coefficientes
+                                - 'zpk'     -> for index.html zeros and poles
+                                - 'zpk-map' -> for Draggable.html p5.js script
+                            
+                            OuputType has 3 options:
+                                - 'time'  -> for impulse response 
+                                - 'freq'  -> for freq response
+                                - 'zpmap' -> for zeros and poles plane
+                 -->
 
                 <br>
                 <label for="maxTime">maxTime </label>
@@ -121,7 +134,7 @@
             </div>
         </aside>
 
-        <!-- PLOT -->
+        <!-- Output PLOT -->
         <div class="plot">
             <canvas id="chart"></canvas>
         </div>

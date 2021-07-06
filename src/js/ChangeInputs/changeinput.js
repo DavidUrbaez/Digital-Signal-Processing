@@ -1,7 +1,7 @@
 let actualInput = 'coef';
 
 
-// let actualOutput = 'time';
+let actualOutput = 'time';
 
 function changeInput(element) {
     element1 = document.querySelector("#btn-coef");
