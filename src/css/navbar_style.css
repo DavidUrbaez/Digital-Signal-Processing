@@ -46,6 +46,7 @@ header {
 nav {
     background-color: var(--primary);
     height: 10vh;
+    min-height: 4rem;
     width: 100%;
     display: flex;
     justify-content: flex-start;
